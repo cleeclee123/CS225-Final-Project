@@ -23,4 +23,4 @@ Agile Methodology does not place fix time commitment on team members. We will be
 The team will resolve situations where there is a disagreement by setting up additional meetings and approach the diagreement in a pragmatic way. Situations where one or more members have not accomplished their tasks will be consider unacceptable. If these situations continue, further action may be taken place (escalating to mentor/course staff). Situations where one or more members are habitually late to meetings should address by reorganizing meeting structure (location, time, etc). The team is encouraged to resolve the issue as a team in a respectful manner before escalation to course staff.
 
 ## Signatures
-Chris Lee
+Christopher Lee
