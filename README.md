@@ -25,3 +25,4 @@ The team will resolve situations where there is a disagreement by setting up add
 ## Signatures
 Christopher Lee
 Areet Sheth
+Siya Digra
