@@ -29,9 +29,9 @@ Week 0 (10/31 - 11/04):
 Week 1 (11/07 - 11/11):
 - Dataset Acquisition
 - Data Correction
-- Start of data processing 
--- cleaning
--- exploratory data analysis
+  - Start of data processing 
+    - cleaning
+  - exploratory data analysis
 
 Week 2 (10/14 - 11/18):
 - Data Storage
