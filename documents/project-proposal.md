@@ -25,7 +25,7 @@ The time complexity of Breadth-first search is O(V + E) for our adjacency list i
 
 In Dijkstra's algorithm, each edge is viewed at most two times: O|E|. Each node is viewed at most two times, once to enqueue and once to query. Enqueue takes constant time O|V| and querying takes logarithmic time O(log|V|) because we will be using a binary heap as our priority queue. The resulting time complexity is: O(|E| + |V|log|V|). The space complexity of Dijkstra's algorithm is O(|V| + |E|) where V is the number of vertices (airports) and E is the number of edges (routes). 
 
-In the iterative deepening DFS algorithm (IDDFS), DFS is continuously run with increasing limits unil the goal is reached. IDDFS has the space efficiecy of DFS and the order nodes are visited from BFS. In this case, the time complexity is O(2^h) where d is the height of the target. This is the worst case scenario in a fully-balanced tree. The space complexity is O(h) where h is also the height of the target. IDDFS only needs to add the most optimal nodes to the stack, h is the optimal solution height. 
+In the iterative deepening DFS algorithm (IDDFS), DFS is continuously run with increasing limits unil the goal is reached. IDDFS has the space efficiecy of DFS and the order nodes are visited from BFS. In this case, the time complexity is O(2^h) where d is the height of the target. This is the worst case scenario in a fully-balanced tree. The space complexity is O(h) where h is also the height of the target. IDDFS only needs to add the most optimal nodes to the stack, h is the optimal solution height.  
 
 
 ## Timeline
