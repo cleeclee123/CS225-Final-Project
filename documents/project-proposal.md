@@ -17,15 +17,16 @@ We will create a Airport object containing information about the Airport such as
 
 Traversal: Breadth-first search
 
-Search: Dijkstra's algorithm & Kruskal's (Minimum Spanning Tree) Algorithm
+Search: Dijkstra's algorithm & Iterative Deepending DFS Algorithm
 
-The inputs given to our implementation of Dijkstra's algorithm & A* search algorithm will the airport code of the starting airport and the airport code of the desire destination. The output will be a boolean value that a route exists and if multiple nodes are traversed, then an array of Airport Objects that represent the shortest path from the starting airport to the destination airport. 
+The inputs given to our implementation of Dijkstra's algorithm & the Iterative Deepending DFS algorithm will the airport code of the starting airport and the airport code of the desire destination. The output will be a boolean value that a route exists and if multiple nodes are traversed, then an array of Airport Objects that represent the shortest path from the starting airport to the destination airport. 
 
 The time complexity of Breadth-first search is O(V + E) for our adjacency list implementation where V is the number of vertices (airports) and E is the number of edges (routes). The space complexity of Breadth-first search is O(|V|) where V is the total number of vertices in our graph. In other words, in the worst case we have to hold all airports in our queue during travsersal. 
 
 In Dijkstra's algorithm, each edge is viewed at most two times: O|E|. Each node is viewed at most two times, once to enqueue and once to query. Enqueue takes constant time O|V| and querying takes logarithmic time O(log|V|) because we will be using a binary heap as our priority queue. The resulting time complexity is: O(|E| + |V|log|V|). The space complexity of Dijkstra's algorithm is O(|V| + |E|) where V is the number of vertices (airports) and E is the number of edges (routes). 
 
-A spanning tree contains all the edges spanned to travel between two nodes. A minimum spanning set is the spanning tree from a graph with the lowest combined weight. Kruskal's algorithm adds edges into a growing spanning tree, adding the edge with the least weight to the tree in each iteration. The algorithm starts with sorting the graph edges based on weight and adding edges from smallest to largest weight (cannot add cyclic edges). Using disjoint sets (From MP Mazes), we can determine whether nodes are connected, which will indicate the path with the lowest weight. Kruskal's algorithm traverses every node at most once, and its time complexity is O(Elog(V)). This is because both the function that finds edges and the disjoint set union function have log(V) time, but every edge is accessed in the worst case, hence O(Elog(V)). The space complexity is O(V + E) for all vertices and edges accessed. Source: https://www.hackerearth.com/practice/algorithms/graphs/minimum-spanning-tree/tutorial/#:~:text=Disjoint%20sets%20are%20sets%20whose,have%20any%20element%20in%20common.&text=In%20Kruskal%27s%20algorithm%2C%20at%20each,the%20edges%20with%20weight%201
+In the iterative deepening DFS algorithm (IDDFS), DFS is continuously run with increasing limits unil the goal is reached. IDDFS has the space efficiecy of DFS and the order nodes are visited from BFS. In this case, the time complexity is O(2^h) where d is the height of the target. This is the worst case scenario in a fully-balanced tree. The space complexity is O(h) where h is also the height of the target. IDDFS only needs to add the most optimal nodes to the stack, h is the optimal solution height. 
+
 
 ## Timeline
 Week 0 (10/31 - 11/04): 
