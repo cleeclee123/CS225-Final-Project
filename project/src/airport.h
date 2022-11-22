@@ -32,8 +32,8 @@ public:
           std::string airportName,
           std::string cityName,
           std::string country,
-          unsigned IATA,
-          unsigned ICAO,
+          std::string IATA,
+          std::string ICAO,
           unsigned latitude,
           unsigned longitude,
           unsigned altitude,
@@ -62,8 +62,8 @@ private:
   std::string airportName_;
   std::string cityName_;
   std::string country_;
-  unsigned IATA_;
-  unsigned ICAO_;
+  std::string IATA_;
+  std::string ICAO_;
   unsigned latitude_;
   unsigned longitude_;
   unsigned altitude_;
