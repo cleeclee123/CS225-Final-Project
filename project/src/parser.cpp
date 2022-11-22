@@ -63,12 +63,12 @@ std::vector<Airport> parseAirports(std::string filename) {
         if (data[6] == "") {
             data[6] = "0";
         }
-        unsigned latitude = std::stod(data[6]);
+        double latitude = std::stod(data[6]);
 
         if (data[7] == "") {
             data[7] = "0";
         }
-        unsigned longitude = std::stod(data[7]);
+        double longitude = std::stod(data[7]);
 
         if (data[8] == "") {
             data[8] = "0";
