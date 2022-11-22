@@ -34,8 +34,8 @@ public:
           std::string country,
           std::string IATA,
           std::string ICAO,
-          unsigned latitude,
-          unsigned longitude,
+          double latitude,
+          double longitude,
           unsigned altitude,
           std::string timezone,
           std::string dst,
@@ -50,6 +50,13 @@ public:
    * @return unsigned distance between two airports from lat/long in kilometers
    */
   unsigned distance(Airport airport);
+
+  /**
+   * helper function to print out airport data
+   * @return nothing like my soul
+   */
+  void printAirport();
+  void hello();
 
 private:
   // private helper functions

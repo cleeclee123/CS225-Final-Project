@@ -1,6 +1,7 @@
 #include "airport.h"
 #include <string>
 #include <cmath>
+#include <iostream>
 
 Airport::Airport()
 {
@@ -12,8 +13,8 @@ Airport::Airport(std::string airportID,
                  std::string country,
                  std::string IATA,
                  std::string ICAO,
-                 unsigned latitude,
-                 unsigned longitude,
+                 double latitude,
+                 double longitude,
                  unsigned altitude,
                  std::string timezone,
                  std::string dst,
@@ -70,4 +71,26 @@ unsigned Airport::distance(Airport airport)
   dist = 2 * std::asin(std::sqrt(dist));
 
   return toKilometers(dist);
+}
+
+void Airport::printAirport()
+{
+  std::cout << "airport id: " << airportID_ << std::endl;
+  std::cout << "airport name: " << airportName_ << std::endl;
+  std::cout << "city name: " << cityName_ << std::endl;
+  std::cout << "country: " << country_ << std::endl;
+  std::cout << "IATA: " << IATA_ << std::endl;
+  std::cout << "ICAO: " << ICAO_ << std::endl;
+  std::cout << "latitude: " << latitude_ << std::endl;
+  std::cout << "longitude: " << longitude_ << std::endl;
+  std::cout << "altitude: " << altitude_ << std::endl;
+  std::cout << "timezone: " << timezone_ << std::endl;
+  std::cout << "dst: " << dst_ << std::endl;
+  std::cout << "tz: " << tz_ << std::endl;
+  std::cout << "type: " << type_ << std::endl;
+}
+
+void Airport::hello()
+{
+  std::cout << "hello world" << std::endl;
 }
