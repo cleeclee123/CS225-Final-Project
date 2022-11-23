@@ -26,6 +26,12 @@ public:
    */
   Airline(std::string airlineID, std::string name, std::string alias, std::string IATA, std::string ICAO, std::string callsign, std::string country, bool isActive);
 
+  /**
+   * helper function to print airline data
+   * @return void like my soul
+   */
+  void printAirline();
+
 private:
   std::string airlineID_;
   std::string name_;

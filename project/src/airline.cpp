@@ -1,5 +1,6 @@
 #include "airline.h"
 #include <string>
+#include <iostream>
 
 Airline::Airline()
 {
@@ -14,4 +15,15 @@ Airline::Airline(std::string airlineID, std::string name, std::string alias, std
   callsign_ = callsign;
   country_ = country;
   isActive_ = isActive;
+}
+
+void Airline::printAirline() {
+  std::cout << "airline id: " << airlineID_ << std::endl;
+  std::cout << "name: " << name_ << std::endl;
+  std::cout << "alias: " << alias_ << std::endl;
+  std::cout << "IATA: " << IATA_ << std::endl;
+  std::cout << "ICAO: " << ICAO_ << std::endl;
+  std::cout << "callsign: " << callsign_ << std::endl;
+  std::cout << "country: " << country_ << std::endl;
+  std::cout << "isActive status: " << isActive_ << std::endl;
 }
