@@ -71,8 +71,8 @@ private:
   std::string country_;
   std::string IATA_;
   std::string ICAO_;
-  unsigned latitude_;
-  unsigned longitude_;
+  double latitude_;
+  double longitude_;
   unsigned altitude_;
   std::string timezone_;
   std::string dst_;
