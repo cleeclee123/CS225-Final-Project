@@ -6,7 +6,8 @@ Airline::Airline()
 {
 }
 
-Airline::Airline(std::string airlineID, std::string name, std::string alias, std::string IATA, std::string ICAO, std::string callsign, std::string country, bool isActive) {
+Airline::Airline(std::string airlineID, std::string name, std::string alias, std::string IATA, std::string ICAO, std::string callsign, std::string country, bool isActive)
+{
   airlineID_ = airlineID;
   name_ = name;
   alias_ = alias;
@@ -17,7 +18,13 @@ Airline::Airline(std::string airlineID, std::string name, std::string alias, std
   isActive_ = isActive;
 }
 
-void Airline::printAirline() {
+bool Airline::operator==(const Airline &rhs) const
+{
+  return IATA_ == rhs.IATA_ && ICAO_ == rhs.ICAO_;
+}
+
+void Airline::printAirline()
+{
   std::cout << "airline id: " << airlineID_ << std::endl;
   std::cout << "name: " << name_ << std::endl;
   std::cout << "alias: " << alias_ << std::endl;

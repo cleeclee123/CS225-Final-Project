@@ -56,7 +56,13 @@ public:
    * @return nothing like my soul
    */
   void printAirport();
-  void hello();
+
+  /**
+   * comparison operator== for airport
+   * @param rhs 
+   * @return bool if airport is equal to each other 
+   */
+  bool operator==(const Airport& rhs) const;
 
   // data members
   std::string airportID_;

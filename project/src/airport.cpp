@@ -73,6 +73,11 @@ unsigned Airport::distance(Airport airport)
   return toKilometers(dist);
 }
 
+bool Airport::operator==(const Airport &rhs) const
+{
+  return IATA_ == rhs.IATA_ && ICAO_ == rhs.ICAO_;
+}
+
 void Airport::printAirport()
 {
   std::cout << "airport id: " << airportID_ << std::endl;

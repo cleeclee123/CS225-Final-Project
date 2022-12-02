@@ -32,6 +32,13 @@ public:
    */
   void printAirline();
 
+  /**
+   * comparison operator== for airline
+   * @param rhs 
+   * @return bool if airline is equal to each other 
+   */
+  bool operator==(const Airline& rhs) const;
+
   // airline data members
   std::string airlineID_;
   std::string name_;
