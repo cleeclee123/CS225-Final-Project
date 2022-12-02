@@ -15,15 +15,15 @@ We will create a Airport object containing information about the Airport such as
 
 ## Algorithm 
 
-Traversal: Breadth-first search
+Traversal: Breadth-first search for Dijkstra's Depth-first search for IDDFS
 
 Search: Dijkstra's algorithm & Iterative Deepending DFS Algorithm
 
 The inputs given to our implementation of Dijkstra's algorithm & the Iterative Deepending DFS algorithm will the airport code of the starting airport and the airport code of the desire destination. The output will be a boolean value that a route exists and if multiple nodes are traversed, then an array of Airport Objects that represent the shortest path from the starting airport to the destination airport. 
 
-The time complexity of Breadth-first search is O(V + E) for our adjacency list implementation where V is the number of vertices (airports) and E is the number of edges (routes). The space complexity of Breadth-first search is O(|V|) where V is the total number of vertices in our graph. In other words, in the worst case we have to hold all airports in our queue during travsersal. 
+The time complexity of breadth-first search/depth-first search is O(V + E) for our adjacency list implementation where V is the number of vertices (airports) and E is the number of edges (routes). The space complexity of depth-first search is O(|V|) where V is the total number of vertices in our graph. In other words, in the worst case we have to hold all airports in our stack during travsersal. 
 
-In Dijkstra's algorithm, each edge is viewed at most two times: O|E|. Each node is viewed at most two times, once to enqueue and once to query. Enqueue takes constant time O|V| and querying takes logarithmic time O(log|V|) because we will be using a binary heap as our priority queue. The resulting time complexity is: O(|E| + |V|log|V|). The space complexity of Dijkstra's algorithm is O(|V| + |E|) where V is the number of vertices (airports) and E is the number of edges (routes). 
+In Dijkstra's algorithm, each edge is viewed at most two times: O|E|. Each node is viewed at most two times, once to enqueue and once to query. Enqueue takes constant time O|V| and querying takes logarithmic time O(log|V|) because we will be using a binary heap as our priority queue. The resulting time complexity is: O(|E| + |V|log|V|). The space complexity of Dijkstra's algorithm is O(|V| + |E|) where V is the number of vertices (airports) and E is the number of edges (routes). This algorithm is a simple modification to breadth first search
 
 In the iterative deepening DFS algorithm (IDDFS), DFS is continuously run with increasing limits unil the goal is reached. IDDFS has the space efficiecy of DFS and the order nodes are visited from BFS. In this case, the time complexity is O(2^h) where d is the height of the target. This is the worst case scenario in a fully-balanced tree. The space complexity is O(h) where h is also the height of the target. IDDFS only needs to add the most optimal nodes to the stack, h is the optimal solution height.  
 
