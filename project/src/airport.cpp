@@ -89,8 +89,3 @@ void Airport::printAirport()
   std::cout << "tz: " << tz_ << std::endl;
   std::cout << "type: " << type_ << std::endl;
 }
-
-void Airport::hello()
-{
-  std::cout << "hello world" << std::endl;
-}
