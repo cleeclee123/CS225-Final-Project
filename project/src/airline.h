@@ -32,7 +32,7 @@ public:
    */
   void printAirline();
 
-private:
+  // airline data members
   std::string airlineID_;
   std::string name_;
   std::string alias_;
@@ -41,4 +41,7 @@ private:
   std::string callsign_;
   std::string country_;
   bool isActive_;
+
+private:
+
 };
