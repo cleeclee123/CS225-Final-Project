@@ -35,6 +35,13 @@ public:
    */
   void printEdge();
 
+  /**
+   * comparison operator== for airline
+   * @param rhs 
+   * @return bool if edge is equal to each other 
+   */
+  bool operator==(const Edge& rhs) const;
+
   // edge data members
   std::string airline_;
   std::string airlineID_;

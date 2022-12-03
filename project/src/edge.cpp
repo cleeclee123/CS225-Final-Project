@@ -20,6 +20,10 @@ Edge::Edge(std::string airline, std::string airlineID, std::string srcIATA, std:
   planeTypes_ = planeTypes;
 }
 
+bool Edge::operator==(const Edge& rhs) const {
+  return srcIATA_ == rhs.srcIATA_ && srcID_ == rhs.srcIATA_ && destIATA_ == rhs.destIATA_ && destID_ == rhs.destID_;
+}
+
 void Edge::printEdge()
 {
   std::cout << "airline: " << airlineID_ << std::endl;
