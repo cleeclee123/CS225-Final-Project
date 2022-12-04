@@ -48,11 +48,9 @@ double Graph::getWeight(Airport from, Airport to) {
 double Graph::Dijkstra(Graph graph, Airport from, Airport to) {
     std::priority_queue<std::pair<double, Airport>, std::vector<std::pair<double, Airport>>, std::greater<std::pair<double, Airport>>> pq;
     std::map<Airport, double> dist;
-    std::map<Airport, Airport> prev;
     std::vector<Airport> airports = graph.getAirports();
     for (auto it = airports.begin(); it != airports.end(); it++) {
         dist[*it] = INT_MAX;
-        prev[*it] = Airport();
     }
     dist[from] = 0;
     pq.push(std::make_pair(0, from));
@@ -65,7 +63,6 @@ double Graph::Dijkstra(Graph graph, Airport from, Airport to) {
             double weight = graph.getWeight(u, v);
             if (dist[v] > dist[u] + weight) {
                 dist[v] = dist[u] + weight;
-                prev[v] = u;
                 pq.push(std::make_pair(dist[v], v));
             }
         }
