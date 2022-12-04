@@ -34,8 +34,9 @@ class Graph {
     std::vector<Airport> getAirports();
     std::vector<Airport> getAdjacentAirports(Airport airport);
     double getWeight(Airport from, Airport to);
+    void Dijkstra(Graph graph, Airport from, Airport to);
 
   private: 
     Airport startingAirport_;
-    std::map<Airport, std::map<Airport, Edge>> adjList_;
+    std::map<Airport, std::vector<Edge>> adjList_;
 };
