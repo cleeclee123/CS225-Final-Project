@@ -12,17 +12,23 @@ Graph::Graph(std::vector<Airport> airports, std::vector<Airline> airlines, std::
   airports_ = airports;
   airlines_ = airlines;
   routes_ = routes;
-  if (routes_.empty())
+
+  for (const auto &airport : airports)
   {
-    for (const auto &airport : airports)
-    {
-      adjList_.insert({airport, std::vector<Edge>()});
-    }
+    adjList_.insert({airport, std::vector<Edge>()});
   }
+  // if (routes_.empty())
+  // {
+  //   for (const auto &airport : airports)
+  //   {
+  //     adjList_.insert({airport, std::vector<Edge>()});
+  //   }
+  // }
 }
 
 void Graph::addEdge(Airport from, Airport to, Edge current)
 {
+  // first condition is redunant because we push all push into adjacency list in constructor
   if (adjList_.find(from) == adjList_.end())
   {
     addAirport(from);
@@ -34,6 +40,7 @@ void Graph::addEdge(Airport from, Airport to, Edge current)
   }
 }
 
+// this function is redunant because we push all push into adjacency list in constructor
 void Graph::addAirport(Airport airport)
 {
   adjList_.insert({airport, std::vector<Edge>()});
@@ -117,40 +124,49 @@ void Graph::printGraph()
   }
 }
 
-size_t Graph::countConnectedComponents() {
+size_t Graph::countConnectedComponents()
+{
   size_t count = 0;
   bool traversed = false;
   std::map<Airport, bool> checked;
-  for (std::pair<Airport, std::vector<Edge>> pair : adjList_) {
+  for (std::pair<Airport, std::vector<Edge>> pair : adjList_)
+  {
     checked.insert(std::pair<Airport, bool>(pair.first, false));
   }
   Airport start;
-  while (!traversed) {
+  while (!traversed)
+  {
     traversed = true;
-    for (std::pair<Airport, bool> pair : checked) {
-      if (!pair.second) {
+    for (std::pair<Airport, bool> pair : checked)
+    {
+      if (!pair.second)
+      {
         start = pair.first;
         traversed = false;
       }
     }
-    if (traversed) {
+    if (traversed)
+    {
       break;
     }
     std::queue<Airport> queue;
     queue.push(start);
     checked.find(start)->second = true;
 
-    while (!queue.empty()) {
+    while (!queue.empty())
+    {
       std::vector<Airport> adj = getAdjacentAirports(queue.front());
-      for (auto const& vertex : adj) {
-        if (!checked.find(vertex)->second) {
+      for (auto const &vertex : adj)
+      {
+        if (!checked.find(vertex)->second)
+        {
           queue.push(vertex);
           checked.find(vertex)->second = true;
         }
       }
       queue.pop();
     }
-    count += 1; 
+    count += 1;
   }
   return count;
 }
