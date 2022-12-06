@@ -6,6 +6,11 @@
 #include <map>
 #include <string>
 
+Graph::Graph(std::vector<Airport> airports, std::vector<Airline> airlines) {
+    airports_ = airports;
+    airlines_ = airlines;
+}
+
 void Graph::addEdge(Airport from, Airport to, Edge current)
 {
     if (std::find(adjList_.begin(), adjList_.end(), from) == adjList_.end())
