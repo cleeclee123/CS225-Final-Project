@@ -35,25 +35,25 @@ void Graph::setStartingAirport(Airport airport)
   startingAirport_ = airport;
 }
 
-// std::vector<Airport> Graph::getAirports()
-// {
-//   std::vector<Airport> airports;
-//   for (auto it = adjList_.begin(); it != adjList_.end(); it++)
-//   {
-//     airports.push_back(it->first);
-//   }
-//   return airports;
-// }
+std::vector<Airport> Graph::getAirports()
+{
+  std::vector<Airport> airports;
+  for (auto it = adjList_.begin(); it != adjList_.end(); it++)
+  {
+    airports.push_back(it->first);
+  }
+  return airports;
+}
 
-// std::vector<Airport> Graph::getAdjacentAirports(Airport airport)
-// {
-//   std::vector<Airport> airports;
-//   for (auto it = adjList_[airport].begin(); it != adjList_[airport].end(); it++)
-//   {
-//     airports.push_back(getAirportByIATA(it->destIATA_));
-//   }
-//   return airports;
-// }
+std::vector<Airport> Graph::getAdjacentAirports(Airport airport)
+{
+  std::vector<Airport> airports;
+  for (auto it = adjList_[airport].begin(); it != adjList_[airport].end(); it++)
+  {
+    airports.push_back(getAirportByIATA(it->destIATA_));
+  }
+  return airports;
+}
 
 double Graph::getWeight(Airport from, Airport to)
 {
@@ -91,7 +91,7 @@ void Graph::printGraph()
     std::cout << it->first.airportName_ << " : edges => ";
     for (const auto &edge : it->second)
     {
-      std::cout << "source: " << edge.srcIATA_ << "dest: " << edge.destIATA_ << " ";
+      std::cout << "source: " << edge.srcIATA_ << " dest: " << edge.destIATA_ << " , ";
     }
     std::cout << std::endl;
   }
