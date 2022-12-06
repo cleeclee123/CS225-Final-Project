@@ -6,6 +6,7 @@
 #include <bits/stdc++.h>
 
 #include "airport.h"
+#include "airline.h"
 #include "edge.h"
 
 class Graph
