@@ -36,9 +36,7 @@ public:
   Airline getAirlineByIATA(std::string IATA);
   void printGraph();
   void buildGraph();
-  int numConnectedComponents();
-  void dfs();
-  void dfsHelper(Airport airport, std::map<Airport, bool> &visited);
+  size_t countConnectedComponents();
 
   // adj list
   std::map<Airport, std::vector<Edge>> adjList_;

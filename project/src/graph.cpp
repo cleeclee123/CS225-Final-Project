@@ -2,6 +2,7 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <queue>
 
 #include "graph.h"
 #include "airport.h"
@@ -25,6 +26,7 @@ void Graph::addEdge(Airport from, Airport to, Edge current)
   if (adjList_.find(from) == adjList_.end())
   {
     addAirport(from);
+    adjList_[from].push_back(current);
   }
   else
   {
@@ -34,7 +36,8 @@ void Graph::addEdge(Airport from, Airport to, Edge current)
 
 void Graph::addAirport(Airport airport)
 {
-  adjList_[airport] = std::vector<Edge>();
+  adjList_.insert({airport, std::vector<Edge>()});
+  // adjList_[airport] = std::vector<Edge>();
 }
 
 void Graph::setStartingAirport(Airport airport)
@@ -114,32 +117,40 @@ void Graph::printGraph()
   }
 }
 
-int Graph::numConnectedComponents()
-{
-  std::map<Airport, bool> visited;
-  for (const auto &airport : adjList_)
-  {
-    Airport curr = airport.first;
-    visited[curr] = false;
+size_t Graph::countConnectedComponents() {
+  size_t count = 0;
+  bool traversed = false;
+  std::map<Airport, bool> checked;
+  for (std::pair<Airport, std::vector<Edge>> pair : adjList_) {
+    checked.insert(std::pair<Airport, bool>(pair.first, false));
   }
-  int count = 0;
-  for (const auto &airport : adjList_)
-  {
-    dfsHelper(airport.first, visited);
-    count++;
+  Airport start;
+  while (!traversed) {
+    traversed = true;
+    for (std::pair<Airport, bool> pair : checked) {
+      if (!pair.second) {
+        start = pair.first;
+        traversed = false;
+      }
+    }
+    if (traversed) {
+      break;
+    }
+    std::queue<Airport> queue;
+    queue.push(start);
+    checked.find(start)->second = true;
+
+    while (!queue.empty()) {
+      std::vector<Airport> adj = getAdjacentAirports(queue.front());
+      for (auto const& vertex : adj) {
+        if (!checked.find(vertex)->second) {
+          queue.push(vertex);
+          checked.find(vertex)->second = true;
+        }
+      }
+      queue.pop();
+    }
+    count += 1; 
   }
   return count;
-}
-
-void Graph::dfsHelper(Airport src, std::map<Airport, bool> &visited)
-{
-  visited[src] = true;
-  for (const auto &edge : adjList_[src])
-  {
-    Airport curr = getAirportByIATA(edge.destIATA_);
-    if (!visited[curr])
-    {
-      dfsHelper(curr, visited);
-    }
-  }
 }
