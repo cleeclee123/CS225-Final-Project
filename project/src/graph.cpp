@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include <unordered_map>
 #include <string>
 
 Graph::Graph(std::vector<Airport> airports, std::vector<Airline> airlines, std::vector<Edge> routes)
@@ -12,6 +11,11 @@ Graph::Graph(std::vector<Airport> airports, std::vector<Airline> airlines, std::
   airports_ = airports;
   airlines_ = airlines;
   routes_ = routes;
+  if (routes_.empty()) {
+    for (const auto& airport : airports) {
+      adjList_.insert({airport, std::vector<Edge>()});
+    }
+  }
 }
 
 void Graph::addEdge(Airport from, Airport to, Edge current)
@@ -105,5 +109,29 @@ void Graph::printGraph()
       std::cout << "source: " << edge.srcIATA_ << " dest: " << edge.destIATA_ << " , ";
     }
     std::cout << std::endl;
+  }
+}
+
+int Graph::numConnectedComponents() {
+  std::map<Airport, bool> visited;
+  for (const auto& airport : adjList_) {
+    Airport curr = airport.first;
+    visited[curr] = false;
+  }
+  int count = 0;
+  for (const auto& airport : adjList_) {
+    dfsHelper(airport.first, visited);
+    count++;
+  }
+  return count;
+}
+
+void Graph::dfsHelper(Airport src, std::map<Airport, bool> &visited) {
+  visited[src] = true;
+  for (const auto& edge : adjList_[src]) {
+    Airport curr = getAirportByIATA(edge.destIATA_); 
+    if (!visited[curr]) {
+      dfsHelper(curr, visited);
+    }
   }
 }

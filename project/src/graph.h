@@ -3,8 +3,6 @@
 #include <vector>
 #include <map>
 #include <string>
-#include <unordered_map>
-#include <bits/stdc++.h>
 
 #include "airport.h"
 #include "airline.h"
@@ -38,6 +36,9 @@ public:
   Airline getAirlineByIATA(std::string IATA);
   void printGraph();
   void buildGraph();
+  int numConnectedComponents();
+  void dfs();
+  void dfsHelper(Airport airport, std::map<Airport, bool> &visited);
 
 private:
   Airport startingAirport_;
