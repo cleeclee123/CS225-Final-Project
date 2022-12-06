@@ -40,9 +40,11 @@ public:
   void dfs();
   void dfsHelper(Airport airport, std::map<Airport, bool> &visited);
 
+  // adj list
+  std::map<Airport, std::vector<Edge>> adjList_;
+
 private:
   Airport startingAirport_;
-  std::map<Airport, std::vector<Edge>> adjList_;
   std::vector<Airport> airports_;
   std::vector<Airline> airlines_;
   std::vector<Edge> routes_;
