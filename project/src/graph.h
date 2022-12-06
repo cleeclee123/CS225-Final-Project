@@ -3,6 +3,7 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <unordered_map>
 #include <bits/stdc++.h>
 
 #include "airport.h"
@@ -26,7 +27,7 @@ public:
     - get weight of edge
   */
   Graph(std::vector<Airport> airports, std::vector<Airline> airlines);
-  void Graph::addEdge(Airport from, Airport to, Edge current);
+  void addEdge(Airport from, Airport to, Edge current);
   void addAirport(Airport airport);
   void setStartingAirport(Airport airport);
   std::vector<Airport> getAirports();
@@ -35,11 +36,11 @@ public:
   double Dijkstra(Graph graph, Airport from, Airport to);
   Airport getAirportByIATA(std::string IATA);
   Airline getAirlineByIATA(std::string IATA);
+  void printGraph();
 
 private:
   Airport startingAirport_;
   std::map<Airport, std::vector<Edge>> adjList_;
   std::vector<Airport> airports_;
   std::vector<Airline> airlines_;
-  std::vector<Edge> routes_;
 };
