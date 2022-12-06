@@ -26,7 +26,7 @@ public:
     - get adjacent vertices
     - get weight of edge
   */
-  Graph(std::vector<Airport> airports, std::vector<Airline> airlines);
+  Graph(std::vector<Airport> airports, std::vector<Airline> airlines, std::vector<Edge> routes_);
   void addEdge(Airport from, Airport to, Edge current);
   void addAirport(Airport airport);
   void setStartingAirport(Airport airport);
@@ -37,10 +37,12 @@ public:
   Airport getAirportByIATA(std::string IATA);
   Airline getAirlineByIATA(std::string IATA);
   void printGraph();
+  void buildGraph();
 
 private:
   Airport startingAirport_;
   std::map<Airport, std::vector<Edge>> adjList_;
   std::vector<Airport> airports_;
   std::vector<Airline> airlines_;
+  std::vector<Edge> routes_;
 };
