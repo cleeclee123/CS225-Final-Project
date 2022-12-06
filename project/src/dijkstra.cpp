@@ -1,3 +1,6 @@
+#include <queue>
+#include <limits.h>
+
 #include "dijkstra.h"
 
 double Dijkstra(Graph graph, Airport from, Airport to)
