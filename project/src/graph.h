@@ -31,17 +31,14 @@ public:
   std::vector<Airport> getAirports();
   std::vector<Airport> getAdjacentAirports(Airport airport);
   double getWeight(Airport from, Airport to);
-  double Dijkstra(Graph graph, Airport from, Airport to);
   Airport getAirportByIATA(std::string IATA);
   Airline getAirlineByIATA(std::string IATA);
   void printGraph();
   void buildGraph();
   size_t countConnectedComponents();
 
-  // adj list
-  std::map<Airport, std::vector<Edge>> adjList_;
-
 private:
+  std::map<Airport, std::vector<Edge>> adjList_;
   Airport startingAirport_;
   std::vector<Airport> airports_;
   std::vector<Airline> airlines_;

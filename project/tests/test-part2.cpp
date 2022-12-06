@@ -38,8 +38,8 @@ TEST_CASE("Construction 0 (No edges)", "[weight=1]") {
   REQUIRE(graph.countConnectedComponents() == 5);
 
   // adjacency list for i-th airport should be empty 
-  for (const auto& airport : graph.adjList_) {
-    REQUIRE(airport.second.size() == 0);
+  for (const auto& airport : airports) {
+    REQUIRE(graph.getAdjacentAirports(airport).size() == 0);
   }
 }
 
