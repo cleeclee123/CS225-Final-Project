@@ -78,6 +78,18 @@ bool Airport::operator==(const Airport &rhs) const
   return IATA_ == rhs.IATA_ && ICAO_ == rhs.ICAO_;
 }
 
+bool Airport::operator<(const Airport &rhs) const
+{
+  return ((std::exp(this->latitude_) * this->longitude_) <
+          (std::exp(rhs.latitude_) * rhs.longitude_));
+}
+
+bool Airport::operator>(const Airport &rhs) const
+{
+  return ((std::exp(this->latitude_) * this->longitude_) >
+          (std::exp(rhs.latitude_) * rhs.longitude_));
+}
+
 void Airport::printAirport()
 {
   std::cout << "airport id: " << airportID_ << std::endl;

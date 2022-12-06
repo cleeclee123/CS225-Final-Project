@@ -64,6 +64,17 @@ public:
    */
   bool operator==(const Airport& rhs) const;
 
+  /**
+   * @brief 
+   * 
+   * @param rhs 
+   * @return bool is this airport to other 
+   */
+  bool operator<(const Airport &rhs) const;
+
+  bool operator>(const Airport &rhs) const;
+
+
   // data members
   std::string airportID_;
   std::string airportName_;
