@@ -1,5 +1,6 @@
 #include "airline.h"
 #include "airport.h"
+#include "edge.h"
 
 #include <iostream>
 #include <fstream>
@@ -163,5 +164,48 @@ std::vector<Airline> parseAirlines(std::string filename) {
         airlines.push_back(airline);
     }
     return airlines;
+}
+
+std::vector<Edge> parseRoutes(std::string filename) {
+    std::vector<Edge> routes;
+    std::ifstream ifs(filename);
+    while (ifs.good()) {
+        std::string line;
+        std::getline(ifs, line);
+        if (line.empty()) {
+            continue;
+        }
+
+        std::vector<std::string> data = split(line, ',');
+        if (data.size() != 9) {
+            continue;
+        }
+
+        std::string airline = data[0];
+
+        std::string airlineID = data[1];
+
+        std::string source = data[2];
+
+        std::string sourceID = data[3];
+
+        std::string destination = data[4];
+
+        std::string destinationID = data[5];
+
+        std::string codeStr = data[6];
+        bool codeshare = false;
+        if (codeStr == "Y") {
+            codeshare = true;
+        }
+
+        int stops = std::stoi(data[7]);
+
+        std::string equipment = data[8];
+
+        Edge route(airline, airlineID, source, sourceID, destination, destinationID, codeshare, stops, equipment);
+        routes.push_back(route);
+    }
+    return routes;
 }
 

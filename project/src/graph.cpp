@@ -10,7 +10,7 @@ void Graph::addEdge(Airport from, Airport to) {
     edge.from_ = from;
     edge.to_ = to;
     edge.distance = from.distance(to);
-    if (adjList_.find(from) == adjList_.end()) {
+    if (std::find(adjList_.begin(), adjList_.end(), from) == adjList_.end()) {
         addAirport(from);
     } 
     adjList_[from].push_back(edge);
