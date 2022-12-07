@@ -84,6 +84,17 @@ public:
   Airline getAirlineByIATA(std::string IATA);
 
   /**
+   * @brief gets the edge between the two passed in airport objects, if it exists
+   *        if no edge exists, return empty edge, works solely on adjancent airports
+   *        to be used as a helper function for shortest path traversals/searching
+   * @param src
+   * @param dest
+   * @return edge object between the two passed in airports
+   */
+  // Edge getEdge(Airport src, Airport dest);
+  std::vector<Edge> getEdge(Airport src, Airport dest);
+
+  /**
    * @brief prints the graph in a pretty way
    *
    */

@@ -159,3 +159,19 @@ size_t Graph::countConnectedComponents()
   }
   return count;
 }
+
+std::vector<Edge> Graph::getEdge(Airport src, Airport dest)
+{
+  std::vector<Edge> edges;
+  for (auto itm = adjList_.cbegin(); itm != adjList_.cend(); itm++)
+  {
+    if (itm->first == src) {
+      for (const auto& edge : itm->second) {
+        if (edge.destIATA_ == dest.IATA_) {
+          edges.push_back(edge);
+        }
+      }
+    }
+  }
+  return edges;
+}
