@@ -1,4 +1,5 @@
 #include "graph.h"
 #include "airport.h"
+#include <queue>
 
-double Dijkstra(Graph graph, Airport from, Airport to);
+std::vector<std::pair<Airport, double>> Dijkstra(Graph graph, Airport from, Airport to);
