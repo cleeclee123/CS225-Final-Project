@@ -34,7 +34,6 @@ public:
   Airport getAirportByIATA(std::string IATA);
   Airline getAirlineByIATA(std::string IATA);
   void printGraph();
-  void buildGraph();
   size_t countConnectedComponents();
 
 private:

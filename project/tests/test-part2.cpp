@@ -32,8 +32,6 @@ TEST_CASE("Construction 0 (No edges)", "[weight=1][part=2]")
 
   // init graph
   Graph graph(airports, airlines, routes);
-  graph.buildGraph();
-  // graph.printGraph();
 
   // count connected components
   REQUIRE(graph.countConnectedComponents() == 5);
@@ -55,8 +53,6 @@ TEST_CASE("Construction 1 (1 edge: ap1 to ap2)", "[weight=1][part=2]")
 
   // init graph
   Graph graph(airports, airlines, routes);
-  graph.buildGraph();
-  // graph.printGraph();
 
   // count connected components
   REQUIRE(graph.countConnectedComponents() == 4);
@@ -89,8 +85,6 @@ TEST_CASE("Construction 2 (4 edges: ap1 to ap2, edge ap1 to ap3, edge ap1 to ap4
 
   // init graph
   Graph graph(airports, airlines, routes);
-  graph.buildGraph();
-  // graph.printGraph();
 
   // count connected components
   REQUIRE(graph.countConnectedComponents() == 2);
@@ -160,8 +154,6 @@ TEST_CASE("Construction 3 (see jpg)", "[weight=1][part=2]")
 
   // init graph
   Graph graph(airports, airlines, routes);
-  graph.buildGraph();
-  graph.printGraph();
 
   // count connected components
   // REQUIRE(graph.countConnectedComponents() == 4);

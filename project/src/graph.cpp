@@ -17,13 +17,12 @@ Graph::Graph(std::vector<Airport> airports, std::vector<Airline> airlines, std::
   {
     adjList_.insert({airport, std::vector<Edge>()});
   }
-  // if (routes_.empty())
-  // {
-  //   for (const auto &airport : airports)
-  //   {
-  //     adjList_.insert({airport, std::vector<Edge>()});
-  //   }
-  // }
+  for (const auto &route : routes_)
+  {
+    Airport src = this->getAirportByIATA(route.srcIATA_);
+    Airport dest = this->getAirportByIATA(route.destIATA_);
+    this->addEdge(src, dest, route);
+  }
 }
 
 void Graph::addEdge(Airport from, Airport to, Edge current)
@@ -99,16 +98,6 @@ Airline Graph::getAirlineByIATA(std::string IATA)
     }
   }
   return Airline();
-}
-
-void Graph::buildGraph()
-{
-  for (const auto &route : routes_)
-  {
-    Airport src = this->getAirportByIATA(route.srcIATA_);
-    Airport dest = this->getAirportByIATA(route.destIATA_);
-    this->addEdge(src, dest, route);
-  }
 }
 
 void Graph::printGraph()
