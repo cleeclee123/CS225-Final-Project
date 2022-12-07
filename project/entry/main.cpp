@@ -15,13 +15,6 @@ int main()
     std::vector<Edge> routes = parseRoutes("../tests/data/routes.dat");
 
     Graph graph(airports, airlines, routes);
-
-    for (const auto &route : routes)
-    {
-        Airport src = graph.getAirportByIATA(route.srcIATA_);
-        Airport dest = graph.getAirportByIATA(route.destIATA_);
-        graph.addEdge(src, dest, route);
-    }
     
     Airport from = graph.getAirportByIATA("CMI");
     Airport to = graph.getAirportByIATA("LHR");
@@ -35,9 +28,14 @@ int main()
     }
     std::cout << std::endl;
     std::cout << "The total distance is: " << path[path.size() - 1].second << std::endl;
-
-
-    
+    for (size_t i = 0; i < path.size(); i++) {
+        for (size_t j = i + 1; j < path.size(); j++) {
+            for (auto& e : graph.getEdge(path[i].first, path[j].first)) {
+                e.printEdge();
+            }
+            std::cout << std::endl;
+        }
+    }
 
     // hard-coded airlines
     // Airline al1("id1", "n1", "a1", "IATA-A1", "ICAO-A1", "c1", "c1", true);
@@ -61,32 +59,152 @@ int main()
     // Airport ap12("id5", "a12", "c12", "c12", "IATA12", "ICAO12", 12, 12, 12, "tz12", "dst12", "tz12", "t12");
     // std::vector<Airport> airports = {ap1, ap2, ap3, ap4, ap5, ap6, ap7, ap8, ap9, ap10, ap11, ap12};
 
-    // Edge e12("al", "id", "IATA1", "id1", "IATA2", "id2", true, 1, "t");
+    // Edge e12("al", "id-edge-12", "IATA1", "id1", "IATA2", "id2", true, 1, "t");
     // Edge e13("al", "id", "IATA1", "id1", "IATA3", "id3", true, 1, "t");
     // Edge e24("al", "id", "IATA2", "id2", "IATA4", "id4", true, 1, "t");
     // Edge e34("al", "id", "IATA3", "id3", "IATA4", "id4", true, 1, "t");
     // Edge e49("al", "id", "IATA4", "id4", "IATA9", "id9", true, 1, "t");
     // Edge e16("al", "id", "IATA1", "id1", "IATA6", "id6", true, 1, "t");
-    // Edge e68("al", "id", "IATA6", "id6", "IATA8", "id8", true, 1, "t");  
+    // Edge e68("al", "id-edge-68", "IATA6", "id6", "IATA8", "id8", true, 1, "t");  
     // Edge e67("al", "id", "IATA6", "id6", "IATA7", "id7", true, 1, "t");
     // Edge e510("al", "id", "IATA5", "id5", "IATA10", "id10", true, 1, "t");
     // std::vector<Edge> routes = {e12, e13, e24, e34, e49, e16, e68, e67, e510};
 
-    // // init graph
+    // // // init graph
     // Graph graph(airports, airlines, routes);
-    // graph.buildGraph();
+    // for (const auto& e : graph.getEdge(ap1, ap4)) {
+    //     std::cout << e.airlineID_ << std::endl;
+    // } 
     // graph.printGraph();
-
-    // // test Dijkstra
-    // Airport from = graph.getAirportByIATA("IATA1");
-    // Airport to = graph.getAirportByIATA("IATA9");
-    // std::vector<std::pair<Airport, double>> path = Dijkstra(graph, from, to);
-    // std::reverse(path.begin(), path.end());
-    // std::cout << "Shortest Path between " << from.airportName_ << " and " << to.airportName_ << " is: " << std::endl;
-    // for (unsigned int i = 0; i < path.size(); i++) {
-    //     std::cout << path[i].first.airportName_;
-    //     if (i != path.size() - 1) std::cout << " -> ";
-    // }
-    // std::cout << std::endl;
-    // std::cout << "The total distance is: " << path[path.size() - 1].second << std::endl;
 }
+
+
+/*
+Shortest Path between University of Illinois Willard Airport and London Heathrow Airport is: 
+University of Illinois Willard Airport -> Chicago O'Hare International Airport -> London Heathrow Airport
+The total distance is: 6560
+
+routes from CMI to ORD:
+- route 1: 
+	airline: 24
+	airline id 24
+	source airport iataCMI
+    source airport id 4049
+    dest airport iata ORD
+    dest airport id 3830
+    does codeshares 1
+    number of stops 0
+    planetypes ER4 ERD
+
+- route 2: 
+    airline: 5265
+    airline id 5265
+    source airport iataCMI
+    source airport id 4049
+    dest airport iata ORD
+    dest airport id 3830
+    does codeshares 0
+    number of stops 0
+    planetypes ERD ER4
+
+
+routes from ORD to LHR: 
+- route 1:
+    airline: 24
+    airline id 24
+    source airport iataORD
+    source airport id 3830
+    dest airport iata LHR
+    dest airport id 507
+    does codeshares 0
+    number of stops 0
+    planetypes 763 777
+
+- route 2: 
+    airline: 2350
+    airline id 2350
+    source airport iataORD
+    source airport id 3830
+    dest airport iata LHR
+    dest airport id 507
+    does codeshares 0
+    number of stops 0
+    planetypes 763 777 744
+
+- route 3: 
+    airline: 1355
+    airline id 1355
+    source airport iataORD
+    source airport id 3830
+    dest airport iata LHR
+    dest airport id 507
+    does codeshares 0
+    number of stops 0
+    planetypes 744 777
+
+- route 4: 
+    airline: 2009
+    airline id 2009
+    source airport iataORD
+    source airport id 3830
+    dest airport iata LHR
+    dest airport id 507
+    does codeshares 1
+    number of stops 0
+    planetypes 343
+
+- route 5:
+    airline: 2822
+    airline id 2822
+    source airport iataORD
+    source airport id 3830
+    dest airport iata LHR
+    dest airport id 507
+    does codeshares 1
+    number of stops 0
+    planetypes 763 777 744
+
+- route 6:
+    airline: 3320
+    airline id 3320
+    source airport iataORD
+    source airport id 3830
+    dest airport iata LHR
+    dest airport id 507
+    does codeshares 1
+    number of stops 0
+    planetypes 763
+
+- route 7:
+    airline: 5209
+    airline id 5209
+    source airport iataORD
+    source airport id 3830
+    dest airport iata LHR
+    dest airport id 507
+    does codeshares 0
+    number of stops 0
+    planetypes 763
+
+- route 8:
+    airline: 5265
+    airline id 5265
+    source airport iataORD
+    source airport id 3830
+    dest airport iata LHR
+    dest airport id 507
+    does codeshares 0
+    number of stops 0
+    planetypes 763 777
+
+- route 9:
+    airline: 5347
+    airline id 5347
+    source airport iataORD
+    source airport id 3830
+    dest airport iata LHR
+    dest airport id 507
+    does codeshares 0
+    number of stops 0
+    planetypes 343
+*/
