@@ -1,5 +1,6 @@
 #include <iostream>
 #include "dijkstra.h"
+#include "IDDFS.h"
 #include "graph.h"
 #include "parser.h"
 #include "airport.h"
@@ -7,6 +8,51 @@
 #include <queue>
 #include <vector>
 #include <bits/stdc++.h>
+
+void RunDijkstra(Graph graph, Airport from, Airport to) {
+    std::vector<std::pair<Airport, double>> path = Dijkstra(graph, from, to);
+    std::reverse(path.begin(), path.end());
+    std::cout << "Shortest Path between " << from.airportName_ << " and " << to.airportName_ << " is: " << std::endl;
+    for (unsigned int i = 0; i < path.size(); i++) {
+        std::cout << path[i].first.airportName_;
+        if (i != path.size() - 1) std::cout << " -> ";
+    }
+    std::cout << std::endl;
+    std::cout << "The total distance is: " << path[path.size() - 1].second << std::endl;
+    std::cout << std::endl;
+    std::cout << "The routes are: " << std::endl;
+    for (size_t i = 0; i < path.size(); i++) {
+        for (size_t j = i + 1; j < path.size(); j++) {
+            for (auto& e : graph.getEdge(path[i].first, path[j].first)) {
+                e.printEdge();
+                std::cout << std::endl;
+            }
+            std::cout << std::endl;
+        }
+    }
+}
+
+void RunIDDFS(Graph graph, Airport from, Airport to, unsigned int max_depth) {
+    std::map<Airport, Airport> previous;
+    std::vector<Airport> path = IDDFS(graph, from, to, max_depth, previous);
+    if (path.empty()) {
+        std::cout << "No path found between " << from.airportName_ << " and " << to.airportName_ << " with atmost " << max_depth << " flights" << std::endl;
+    } else {
+        std::reverse(path.begin(), path.end());
+        //calculate total distance
+        int totalDistance = 0;
+        for (unsigned int i = 0; i < path.size() - 1; i++) {
+            totalDistance += graph.getWeight(path[i], path[i + 1]);
+        }
+        std::cout << "Path between " << from.airportName_ << " and " << to.airportName_ << " with atmost " << max_depth << " flights is: " << std::endl;
+        for (unsigned int i = 0; i < path.size(); i++) {
+            std::cout << path[i].airportName_;
+            if (i != path.size() - 1) std::cout << " -> ";
+        }
+        std::cout << std::endl;
+        std::cout << "The total distance is: " << totalDistance << std::endl;
+    }
+}
 
 int main()
 {
@@ -19,23 +65,10 @@ int main()
     Airport from = graph.getAirportByIATA("CMI");
     Airport to = graph.getAirportByIATA("LHR");
 
-    std::vector<std::pair<Airport, double>> path = Dijkstra(graph, from, to);
-    std::reverse(path.begin(), path.end());
-    std::cout << "Shortest Path between " << from.airportName_ << " and " << to.airportName_ << " is: " << std::endl;
-    for (unsigned int i = 0; i < path.size(); i++) {
-        std::cout << path[i].first.airportName_;
-        if (i != path.size() - 1) std::cout << " -> ";
-    }
-    std::cout << std::endl;
-    std::cout << "The total distance is: " << path[path.size() - 1].second << std::endl;
-    for (size_t i = 0; i < path.size(); i++) {
-        for (size_t j = i + 1; j < path.size(); j++) {
-            for (auto& e : graph.getEdge(path[i].first, path[j].first)) {
-                e.printEdge();
-            }
-            std::cout << std::endl;
-        }
-    }
+    //RunDijkstra(graph, from, to);
+    RunIDDFS(graph, from, to, 2);
+
+
 
     // hard-coded airlines
     // Airline al1("id1", "n1", "a1", "IATA-A1", "ICAO-A1", "c1", "c1", true);
@@ -75,7 +108,8 @@ int main()
     // for (const auto& e : graph.getEdge(ap1, ap4)) {
     //     std::cout << e.airlineID_ << std::endl;
     // } 
-    // graph.printGraph();
+    // //graph.printGraph();
+
 }
 
 
