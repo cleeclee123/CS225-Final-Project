@@ -88,7 +88,7 @@ This command will specifically run the search algorithm test cases.
 
 This command will specifically run DFS test cases.
 ```bash
-./test [part=1]
+./test [part=4]
 ```
 
 ## Project Structure and Features
