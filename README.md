@@ -72,7 +72,7 @@ The command `./main` will default to a prompt, similar to what you see above, li
 The command `./main default` is suggested to be run first. This gives a demo of what we have built. Specifically, this tests the shortest route avaliable from Willard Airport to London Heathrow Airport on a Boeing 747 operated by American Airlines. 
 The commands followed by "0" runs the respective algorithm/feature on a the entire Open Flights datasets: airports.dat, airline.dat, routes.dat.
 The commands followed by "1" runs the respective algorithm/feature on the datasets passed in as argv[0] to argv[1].
-Executing the last command is at your own risk, you have been warn.
+Executing the last command is at your own risk, you have been warned.
 
 Checking for memory leaks: 
 ```bash 
