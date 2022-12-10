@@ -123,14 +123,32 @@ public:
   void dfs(Airport v);
 
   /**
+   * @brief clears the private member data for dfs traversal
+   * 
+   */
+  void clearTraversal();
+
+  /**
    * determines if src is in the same componenet as dest /
    * used in testing/building test cases
+   * 
+   * how it works: uses dfs to determine if a path exists between two airports
+   * the in_ map tracks when we first visit the airport, the out map tracks if 
+   * we visit the airport again when there are no children/other airports in the path
+   * reference: https://www.geeksforgeeks.org/check-if-two-nodes-are-on-same-path-in-a-tree/
    * 
    * @param src 
    * @param dest 
    * @return true
    */
   bool inComponent(Airport src, Airport dest);
+
+  /**
+   * @brief getter for dfsPath_
+   * 
+   * @return vector of airports from dfs traversal
+   */
+  std::vector<Airport> getDFSpath();
 
 private:
   // private data members
@@ -139,9 +157,9 @@ private:
   std::vector<Airport> airports_;
   std::vector<Airline> airlines_;
   std::vector<Edge> routes_;
-
   std::map<Airport, bool> visited_;
   std::map<Airport, int> in_;
   std::map<Airport, int> out_;
   int count_;
+  std::vector<Airport> dfsPath_;
 };

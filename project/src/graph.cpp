@@ -51,7 +51,8 @@ void Graph::setStartingAirport(Airport airport)
   startingAirport_ = airport;
 }
 
-Airport Graph::getStartingAirport() {
+Airport Graph::getStartingAirport()
+{
   return startingAirport_;
 }
 
@@ -169,9 +170,12 @@ std::vector<Edge> Graph::getEdge(Airport src, Airport dest)
   std::vector<Edge> edges;
   for (auto itm = adjList_.cbegin(); itm != adjList_.cend(); itm++)
   {
-    if (itm->first == src) {
-      for (const auto& edge : itm->second) {
-        if (edge.getDestIATA() == dest.getIATA()) {
+    if (itm->first == src)
+    {
+      for (const auto &edge : itm->second)
+      {
+        if (edge.getDestIATA() == dest.getIATA())
+        {
           edges.push_back(edge);
         }
       }
@@ -180,27 +184,31 @@ std::vector<Edge> Graph::getEdge(Airport src, Airport dest)
   return edges;
 }
 
-void Graph::dfs(Airport v) {
-    // update visited map
+void Graph::dfs(Airport v)
+{
+  // update visited map
   std::map<Airport, bool>::iterator itv = visited_.find(v);
-  if (itv != visited_.end()) {
+  if (itv != visited_.end())
+  {
     itv->second = true;
   }
 
   // recursion for v, entry time
   count_++;
-  std::cout << count_ << std::endl;
 
   // update in time map
   std::map<Airport, int>::iterator iti = in_.find(v);
-  if (iti != in_.end()) {
+  if (iti != in_.end())
+  {
     iti->second = count_;
   }
 
   std::vector<Edge>::iterator ite = adjList_[v].begin();
-  while (ite != adjList_[v].end()) {
-    std::cout << getAirportByIATA(ite->getDestIATA()).getIATA() << std::endl;
-    if (visited_[getAirportByIATA(ite->getDestIATA())] == false) {
+  while (ite != adjList_[v].end())
+  {
+    if (visited_[getAirportByIATA(ite->getDestIATA())] == false)
+    {
+      dfsPath_.push_back(getAirportByIATA(ite->getDestIATA()));
       dfs(getAirportByIATA(ite->getDestIATA()));
     }
     ite++;
@@ -208,16 +216,39 @@ void Graph::dfs(Airport v) {
 
   // recursion for v, exit time
   count_++;
-  std::cout << count_ << std::endl;
 
   // update out time map
   std::map<Airport, int>::iterator ito = out_.find(v);
-  if (ito != out_.end()) {
+  if (ito != out_.end())
+  {
     ito->second = count_;
   }
 }
 
-bool Graph::inComponent(Airport src, Airport dest) {
-  return ( (in_[src] < in_[dest] && out_[src] > out_[dest]) ||
-             (in_[src] < in_[dest] && out_[src] > out_[dest]) );
+void Graph::clearTraversal()
+{
+  visited_.clear();
+  in_.clear();
+  out_.clear();
+  count_ = 0;
+  dfsPath_.clear();
+
+  // re-init 
+  for (const auto &airport : airports_)
+  {
+    visited_.insert({airport, false});
+    in_.insert({airport, -1});
+    out_.insert({airport, -1});
+  }
+}
+
+bool Graph::inComponent(Airport src, Airport dest)
+{
+  return ((in_[src] < in_[dest] && out_[src] > out_[dest]) ||
+          (in_[src] < in_[dest] && out_[src] > out_[dest]));
+}
+
+std::vector<Airport> Graph::getDFSpath()
+{
+  return dfsPath_;
 }
