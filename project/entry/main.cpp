@@ -219,7 +219,8 @@ int main(int argc, char *argv[])
     std::cout << "./main extra1 [airport file] [airline file] [routes file] [src airport IATA] [dest airport IATA] [airline] [airplane]" << std::endl;
     std::cout << "./main dfs1 [airport file] [airline file] [routes file] [starting airport]" << std::endl;
     std::cout << std::endl;
-
+    
+    std::cout << "If you're feeling risky" << std::endl;
     std::cout << "./main dontrunthis" << std::endl;
   }
   else if (argc >= 2)
