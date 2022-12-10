@@ -85,6 +85,8 @@ The tests that will be run are located within the tests folder of the project, a
   
 * #### Algorithms
 
+  * Dijkstra's Shortest-Path Algorithm
+  * Iterative Deepening Depth First Search Algorithm
  
   </details>
 
