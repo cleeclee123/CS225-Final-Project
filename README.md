@@ -134,8 +134,20 @@ This command will specifically run DFS test cases.
   
 * #### Algorithms (Areet)
   * Dijkstra's Shortest-Path Algorithm
+    * Finds a path between a "from" and "to" airport
+    * Path found will be the shortest in terms of distance
+    * If two airports are unconnected, empty return
   * Iterative Deepening Depth First Search Algorithm
+    * Finds a path between a "from" and "to" airport
+    * May not be shortest path b/c does not account for edge weight
+    * Works as a combination of DFS and BFS
+      * Runs DFS at incrementing depths
+    * Restricted by a max depth, which represents the number of flights the path can take
+    * If two airports are unconnected or path outside of max depth, empty return 
   * DFS
+    * Searches graph to find path between 
+    * Does not account for edge weights
+    * First searches down, and then across, hence depth-first search
  
 
 #### The structure of this README.md was heavily inspired from [Here](https://github.com/zeh3/wikipedia-game)
