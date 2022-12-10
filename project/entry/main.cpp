@@ -206,7 +206,7 @@ int main()
     Airport from = graph.getAirportByIATA("CMI"); // change this to a different airport iata
     Airport to = graph.getAirportByIATA("LHR"); // change this to a different airport iata
     std::string airline = "american airlines"; // change this to a different airline
-    c.airplaneType = "747"; // change this to a different 747
+    c.airplaneType = "747"; // change this to a different airplane type
 
     std::string airlineID = getIDfromAirlineName(airlines, airline).airlineID_;
     c.airlineID = airlineID;
