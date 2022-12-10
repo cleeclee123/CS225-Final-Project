@@ -66,11 +66,13 @@ There are 4 main commands that can be run after building the main executable fro
 ./main iddfs1 [airport file] [airline file] [routes file] [src airport IATA] [dest airport IATA] [number of layovers]
 ./main extra1 [airport file] [airline file] [routes file] [src airport IATA] [dest airport IATA] [airline] [airplane]
 ./main dfs1 [airport file] [airline file] [routes file] [starting airport]
+./main dontrunthis
 ```
 The command `./main` will default to a prompt, similar to what you see above, listing all of the available commands.
 The command `./main default` is suggested to be run first. This gives a demo of what we have built. Specifically, this tests the shortest route avaliable from Willard Airport to London Heathrow Airport on a Boeing 747 operated by American Airlines. 
-The commands followed by "0" runs the respective algorithm/feature on a the entire Open Flights datasets: airports.dat, airline.dat, routes.dat
-The commands followed by "1" runs the respective algorithm/feature on the datasets passed in as argv[0] to argv[1]
+The commands followed by "0" runs the respective algorithm/feature on a the entire Open Flights datasets: airports.dat, airline.dat, routes.dat.
+The commands followed by "1" runs the respective algorithm/feature on the datasets passed in as argv[0] to argv[1].
+Executing the last command is at your own risk, you have been warn.
 
 Checking for memory leaks: 
 ```bash 
