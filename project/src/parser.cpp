@@ -22,9 +22,7 @@ std::vector<std::string> split(std::string line, char delimiter) {
 std::vector<Airport> parseAirports(std::string filename) {
     std::vector<Airport> airports;
     std::ifstream ifs(filename);
-    std::cout << "Before while loop..." << std::endl;
     while (ifs.good()) {
-       // std::cout << "Parsing airports..." << std::endl;
         std::string line;
         std::getline(ifs, line);
         if (line.empty()) {

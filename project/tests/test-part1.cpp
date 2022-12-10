@@ -24,7 +24,7 @@ TEST_CASE("split function", "[weight=1][part=1]") {
 }
 
 TEST_CASE("parseAirport function", "[weight=1][part=1]") {
-    std::vector<Airport> airports = parseAirports("data/airline_test.dat");
+    std::vector<Airport> airports = parseAirports("../tests/data/airport_test.dat");
     REQUIRE(airports.size() == 7);
     REQUIRE(airports[0].getAirportID() == "148");
     REQUIRE(airports[0].getAirportName() == "Hall Beach Airport");
