@@ -71,7 +71,7 @@ std::string Edge::getPlaneTypes() const
 
 void Edge::printEdge()
 {
-  std::cout << "airline: " << airlineID_ << std::endl;
+  std::cout << "airline: " << airline_ << std::endl;
   std::cout << "airline id " << airlineID_ << std::endl;
   std::cout << "source airport iata" << srcIATA_ << std::endl;
   std::cout << "source airport id " << srcID_ << std::endl;

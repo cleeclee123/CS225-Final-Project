@@ -42,9 +42,28 @@ TEST_CASE("parseAirport function", "[weight=1][part=1]") {
 }
 
 TEST_CASE("parseAirline function", "[weight=1][part=1]") {
-   
+    std::vector<Airline> airlines = parseAirlines("../tests/data/airline_test.dat");
+    REQUIRE(airlines.size() == 5);
+    REQUIRE(airlines[0].getAirlineID() == "2");
+    REQUIRE(airlines[0].getName() == "135 Airways");
+    REQUIRE(airlines[0].getAlias() == "");
+    REQUIRE(airlines[0].getIATA() == "");
+    REQUIRE(airlines[0].getICAO() == "GNL");
+    REQUIRE(airlines[0].getCallsign() == "GENERAL");
+    REQUIRE(airlines[0].getCountry() == "United States");
+    REQUIRE_FALSE(airlines[0].getIsActive());
 }
 
 TEST_CASE("parseRoute function", "[weight=1][part=1]") {
-    
+    std::vector<Edge> routes = parseRoutes("../tests/data/route_test.dat");
+    REQUIRE(routes.size() == 6);
+    REQUIRE(routes[0].getAirline() == "UA");
+    REQUIRE(routes[0].getAirlineID() == "5209");
+    REQUIRE(routes[0].getSrcIATA() == "DEN");
+    REQUIRE(routes[0].getSrcID() == "3751");
+    REQUIRE(routes[0].getDestIATA() == "SGU");
+    REQUIRE(routes[0].getDestID() == "4064");
+    REQUIRE(routes[0].getCodeshare());
+    REQUIRE(routes[0].getStops() == 0);
+    REQUIRE(routes[0].getPlaneTypes() == "CRJ");
 }
