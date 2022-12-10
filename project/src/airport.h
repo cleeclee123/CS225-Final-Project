@@ -74,6 +74,97 @@ public:
 
   bool operator>(const Airport &rhs) const;
 
+  /**
+   * @brief Get the Airport ID object
+   *
+   * @return std::string
+   */
+  std::string getAirportID() const;
+
+  /**
+   * @brief Get the Airport Name object
+   *
+   * @return std::string
+   */
+  std::string getAirportName() const;
+
+  /**
+   * @brief Get the City Name object
+   *
+   * @return std::string
+   */
+  std::string getCityName() const;
+
+  /**
+   * @brief Get the Country object
+   *
+   * @return std::string
+   */
+  std::string getCountry() const;
+
+  /**
+   * @brief Get the IATA object
+   *
+   * @return std::string
+   */
+  std::string getIATA() const;
+
+  /**
+   * @brief Get the ICAO object
+   *
+   * @return std::string
+   */
+  std::string getICAO() const;
+
+  /**
+   * @brief Get the Latitude object
+   *
+   * @return double
+   */
+  double getLatitude() const;
+
+  /**
+   * @brief Get the Longitude object
+   *
+   * @return double
+   */
+  double getLongitude() const;
+
+  /**
+   * @brief Get the Altitude object
+   *
+   * @return unsigned
+   */
+  unsigned getAltitude() const;
+
+  /**
+   * @brief Get the Timezone object
+   *
+   * @return std::string
+   */
+  std::string getTimezone() const;
+
+  /**
+   * @brief Get the Dst object
+   *
+   * @return std::string
+   */
+  std::string getDst() const;
+
+  /**
+   * @brief Get the Tz object
+   *
+   * @return std::string
+   */
+  std::string getTz() const;
+
+  /**
+   * @brief Get the Type object
+   *
+   * @return std::string
+   */
+  std::string getType() const;
+
 
   // data members
   std::string airportID_;

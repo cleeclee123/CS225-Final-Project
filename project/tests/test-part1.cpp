@@ -23,71 +23,73 @@ TEST_CASE("split function", "[weight=1][part=1]") {
     REQUIRE(tokens[13] == "14");
 }
 
-// test parseAirport function
 TEST_CASE("parseAirport function", "[weight=1][part=1]") {
     std::string line = "1,\"Goroka\",\"Goroka\",\"Papua New Guinea\",\"GKA\",\"AYGA\",-6.081689834590001,145.391998291,5282,10,\"U\",\"Pacific/Port_Moresby\",\"airport\",\"OurAirports\"";
-    Airport airport = parseAirport(line);
-    REQUIRE(airport.getID() == "1");
-    REQUIRE(airport.getName() == "Goroka");
-    REQUIRE(airport.getCity() == "Goroka");
-    REQUIRE(airport.getCountry() == "Papua New Guinea");
-    REQUIRE(airport.getIATA() == "GKA");
-    REQUIRE(airport.getICAO() == "AYGA");
-    REQUIRE(airport.getLatitude() == -6.081689834590001);
-    REQUIRE(airport.getLongitude() == 145.391998291);
-    REQUIRE(airport.getAltitude() == 5282);
-    REQUIRE(airport.getTimezone() == "10");
-    REQUIRE(airport.getDST() == "U");
-    REQUIRE(airport.getTZ() == "Pacific/Port_Moresby");
+    std::vector<Airport> airports = parseAirports(line);
+    REQUIRE(airports.size() == 1);
+    REQUIRE(airports[0].getAirportID() == "1");
+    REQUIRE(airports[0].getAirportName() == "Goroka");
+    REQUIRE(airports[0].getCityName() == "Goroka");
+    REQUIRE(airports[0].getCountry() == "Papua New Guinea");
+    REQUIRE(airports[0].getIATA() == "GKA");
+    REQUIRE(airports[0].getICAO() == "AYGA");
+    REQUIRE(airports[0].getLatitude() == -6.081689834590001);
+    REQUIRE(airports[0].getLongitude() == 145.391998291);
+    REQUIRE(airports[0].getAltitude() == 5282);
+    REQUIRE(airports[0].getTimezone() == "10");
+    REQUIRE(airports[0].getDst() == "U");
+    REQUIRE(airports[0].getTz() == "Pacific/Port_Moresby");
 }
 
-// test parseAirline function
 TEST_CASE("parseAirline function", "weight=1][part=1]") {
     std::string line = "1,\"Private flight\",\"\",\"\",\"\",\"\",\"Y\",\"\"";
-    Airline airline = parseAirline(line);
-    REQUIRE(airline.getID() == "1");
-    REQUIRE(airline.getName() == "Private flight");
-    REQUIRE(airline.getAlias() == "");
-    REQUIRE(airline.getIATA() == "");
-    REQUIRE(airline.getICAO() == "");
-    REQUIRE(airline.getCallSign() == "");
-    REQUIRE(airline.getCountry() == "Y");
-    REQUIRE(airline.getActive() == "");
+    std::vector<Airline> airlines = parseAirlines(line);
+    REQUIRE(airlines.size() == 1);
+    REQUIRE(airlines[0].getAirlineID() == "1");
+    REQUIRE(airlines[0].getName() == "Private flight");
+    REQUIRE(airlines[0].getAlias() == "");
+    REQUIRE(airlines[0].getIATA() == "");
+    REQUIRE(airlines[0].getICAO() == "");
+    REQUIRE(airlines[0].getCallsign() == "");
+    REQUIRE(airlines[0].getCountry() == "Y");
+    REQUIRE_FALSE(airlines[0].getIsActive());
 
-    std::string line = "2,\"135 Airways\",\"\",\"GNL\",\"GENERAL\",\"GENERAL AIRLINES\",\"Y\",\"\"";
-    Airline airline = parseAirline(line);
-    REQUIRE(airline.getID() == "2");  
-    REQUIRE(airline.getName() == "135 Airways");
-    REQUIRE(airline.getAlias() == "");
-    REQUIRE(airline.getIATA() == "GNL");
-    REQUIRE(airline.getICAO() == "GENERAL");
-    REQUIRE(airline.getCallSign() == "GENERAL AIRLINES");
-    REQUIRE(airline.getCountry() == "Y");
-    REQUIRE(airline.getActive() == "");
+    std::string line2 = "2,\"135 Airways\",\"\",\"GNL\",\"GENERAL\",\"GENERAL AIRLINES\",\"Y\",\"\"";
+    std::vector<Airline> airlines2 = parseAirlines(line2);
+    REQUIRE(airlines2.size() == 1);
+    REQUIRE(airlines2[0].getAirlineID() == "2");
+    REQUIRE(airlines2[0].getName() == "135 Airways");
+    REQUIRE(airlines2[0].getAlias() == "");
+    REQUIRE(airlines2[0].getIATA() == "GNL");
+    REQUIRE(airlines2[0].getICAO() == "GENERAL");
+    REQUIRE(airlines2[0].getCallsign() == "GENERAL AIRLINES");
+    REQUIRE(airlines2[0].getCountry() == "Y");
+    REQUIRE_FALSE(airlines2[0].getIsActive());
 
-    std::string line = "3,\"1Time Airline\",\"1Time Airline\",\"RNX\",\"NEXTIME\",\"NEXTIME AIRLINES\",\"N\",\"Y\"";
-    Airline airline = parseAirline(line);
-    REQUIRE(airline.getID() == "3");
-    REQUIRE(airline.getName() == "1Time Airline");
-    REQUIRE(airline.getAlias() == "1Time Airline");
-    REQUIRE(airline.getIATA() == "RNX");
-    REQUIRE(airline.getICAO() == "NEXTIME");
-    REQUIRE(airline.getCallSign() == "NEXTIME AIRLINES");
-    REQUIRE(airline.getCountry() == "N");
-    REQUIRE(airline.getActive() == "Y");
+    std::string line3 = "3,\"1Time Airline\",\"1Time Airline\",\"RNX\",\"NEXTIME\",\"NEXTIME AIRLINES\",\"N\",\"Y\"";
+    std::vector<Airline> airlines3 = parseAirlines(line3);
+    REQUIRE(airlines3.size() == 1);
+    REQUIRE(airlines3[0].getAirlineID() == "3");
+    REQUIRE(airlines3[0].getName() == "1Time Airline");
+    REQUIRE(airlines3[0].getAlias() == "1Time Airline");
+    REQUIRE(airlines3[0].getIATA() == "RNX");
+    REQUIRE(airlines3[0].getICAO() == "NEXTIME");
+    REQUIRE(airlines3[0].getCallsign() == "NEXTIME AIRLINES");
+    REQUIRE(airlines3[0].getCountry() == "N");
+    REQUIRE(airlines3[0].getIsActive());
 }
 
-// test parseRoute function
 TEST_CASE("parseRoute function", "[weight=1][part=1]") {
     std::string line = "2B,410,AER,2965,KZN,2990,,0,CR2";
-    Route route = parseRoute(line);
-    REQUIRE(route.getAirline() == "2B");
-    REQUIRE(route.getAirlineID() == "410");
-    REQUIRE(route.getSource() == "AER");
-    REQUIRE(route.getSourceID() == "2965");
-    REQUIRE(route.getDestination() == "KZN");
-    REQUIRE(route.getDestinationID() == "2990");
-    REQUIRE(route.getCodeshare() == "");
-    REQUIRE(route.getStops() == "0");
-    REQUIRE(route.getEquipment() == "CR2");
+    std::vector<Edge> routes = parseRoutes(line);
+    REQUIRE(routes.size() == 1);
+    REQUIRE(routes[0].getAirline() == "2B");
+    REQUIRE(routes[0].getAirlineID() == "410");
+    REQUIRE(routes[0].getSrcIATA() == "AER");
+    REQUIRE(routes[0].getSrcID() == "2965");
+    REQUIRE(routes[0].getDestIATA() == "KZN");
+    REQUIRE(routes[0].getDestIATA() == "2990");
+    REQUIRE_FALSE(routes[0].getCodeshare());
+    REQUIRE(routes[0].getStops() == 0);
+    REQUIRE(routes[0].getPlaneTypes() == "CR2");
 }

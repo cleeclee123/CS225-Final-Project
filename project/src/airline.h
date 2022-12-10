@@ -39,6 +39,63 @@ public:
    */
   bool operator==(const Airline& rhs) const;
 
+  /**
+   * @brief Get the Airline ID object
+   * 
+   * @return std::string 
+   */
+  std::string getAirlineID() const;
+
+  /**
+   * @brief Get the Name object
+   * 
+   * @return std::string 
+   */
+  std::string getName() const;
+
+  /**
+   * @brief Get the Alias object
+   * 
+   * @return std::string 
+   */
+  std::string getAlias() const;
+
+  /**
+   * @brief Get the IATA object
+   * 
+   * @return std::string 
+   */
+  std::string getIATA() const;
+
+  /**
+   * @brief Get the ICAO object
+   * 
+   * @return std::string 
+   */
+  std::string getICAO() const;
+
+  /**
+   * @brief Get the Callsign object
+   * 
+   * @return std::string 
+   */
+  std::string getCallsign() const;
+
+  /**
+   * @brief Get the Country object
+   * 
+   * @return std::string 
+   */
+  std::string getCountry() const;
+
+  /**
+   * @brief Get the Is Active object
+   * 
+   * @return true 
+   * @return false 
+   */
+  bool getIsActive() const;
+
   // airline data members
   std::string airlineID_;
   std::string name_;

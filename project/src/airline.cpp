@@ -34,3 +34,43 @@ void Airline::printAirline()
   std::cout << "country: " << country_ << std::endl;
   std::cout << "isActive status: " << isActive_ << std::endl;
 }
+
+std::string Airline::getAirlineID() const
+{
+  return airlineID_;
+}
+
+std::string Airline::getName() const
+{
+  return name_;
+}
+
+std::string Airline::getAlias() const
+{
+  return alias_;
+}
+
+std::string Airline::getIATA() const
+{
+  return IATA_;
+}
+
+std::string Airline::getICAO() const
+{
+  return ICAO_;
+}
+
+std::string Airline::getCallsign() const
+{
+  return callsign_;
+}
+
+std::string Airline::getCountry() const
+{
+  return country_;
+}
+
+bool Airline::getIsActive() const
+{
+  return isActive_;
+}

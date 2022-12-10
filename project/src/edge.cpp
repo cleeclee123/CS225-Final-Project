@@ -24,6 +24,51 @@ bool Edge::operator==(const Edge& rhs) const {
   return srcIATA_ == rhs.srcIATA_ && srcID_ == rhs.srcIATA_ && destIATA_ == rhs.destIATA_ && destID_ == rhs.destID_;
 }
 
+std::string Edge::getAirline() const
+{
+  return airline_;
+}
+
+std::string Edge::getAirlineID() const
+{
+  return airlineID_;
+}
+
+std::string Edge::getSrcIATA() const
+{
+  return srcIATA_;
+}
+
+std::string Edge::getSrcID() const
+{
+  return srcID_;
+}
+
+std::string Edge::getDestIATA() const
+{
+  return destIATA_;
+}
+
+std::string Edge::getDestID() const
+{
+  return destID_;
+}
+
+bool Edge::getCodeshare() const
+{
+  return codeshare_;
+}
+
+int Edge::getStops() const
+{
+  return stops_;
+}
+
+std::string Edge::getPlaneTypes() const
+{
+  return planeTypes_;
+}
+
 void Edge::printEdge()
 {
   std::cout << "airline: " << airlineID_ << std::endl;

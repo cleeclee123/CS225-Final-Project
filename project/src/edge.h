@@ -42,6 +42,69 @@ public:
    */
   bool operator==(const Edge& rhs) const;
 
+  /**
+   * @brief Get the Airline object
+   *
+   * @return std::string
+   */
+  std::string getAirline() const;
+
+  /**
+   * @brief Get the Airline ID object
+   *
+   * @return std::string
+   */
+  std::string getAirlineID() const;
+
+  /**
+   * @brief Get the Src IATA object
+   *
+   * @return std::string
+   */
+  std::string getSrcIATA() const;
+
+  /**
+   * @brief Get the Src ID object
+   *
+   * @return std::string
+   */
+  std::string getSrcID() const;
+
+  /**
+   * @brief Get the Dest IATA object
+   *
+   * @return std::string
+   */
+  std::string getDestIATA() const;  
+
+  /**
+   * @brief Get the Dest ID object
+   *
+   * @return std::string
+   */
+  std::string getDestID() const;
+
+  /**
+   * @brief Get the Codeshare object
+   *
+   * @return bool
+   */
+  bool getCodeshare() const;
+
+  /**
+   * @brief Get the Stops object
+   *
+   * @return int
+   */
+  int getStops() const;
+
+  /**
+   * @brief Get the Plane Types object
+   *
+   * @return std::string
+   */
+  std::string getPlaneTypes() const;
+
   // edge data members
   std::string airline_;
   std::string airlineID_;

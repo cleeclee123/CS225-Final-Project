@@ -90,6 +90,71 @@ bool Airport::operator>(const Airport &rhs) const
           (std::exp(rhs.latitude_) * rhs.longitude_));
 }
 
+std::string Airport::getAirportID() const
+{
+  return airportID_;
+}
+
+std::string Airport::getAirportName() const
+{
+  return airportName_;
+}
+
+std::string Airport::getCityName() const
+{
+  return cityName_;
+}
+
+std::string Airport::getCountry() const
+{
+  return country_;
+}
+
+std::string Airport::getIATA() const
+{
+  return IATA_;
+}
+
+std::string Airport::getICAO() const
+{
+  return ICAO_;
+}
+
+double Airport::getLatitude() const
+{
+  return latitude_;
+}
+
+double Airport::getLongitude() const
+{
+  return longitude_;
+}
+
+unsigned Airport::getAltitude() const
+{
+  return altitude_;
+}
+
+std::string Airport::getTimezone() const
+{
+  return timezone_;
+}
+
+std::string Airport::getDst() const
+{
+  return dst_;
+}
+
+std::string Airport::getTz() const
+{
+  return tz_;
+}
+
+std::string Airport::getType() const
+{
+  return type_;
+}
+
 void Airport::printAirport()
 {
   std::cout << "airport id: " << airportID_ << std::endl;
