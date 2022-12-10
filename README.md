@@ -51,7 +51,7 @@ This runs CMake to initialize the current directory which is the build directory
 
 To build the file, use the command:
 ```bash
-make
+make main
 ```
 
 There are 4 main commands that can be run after building the main executable from the main command:
