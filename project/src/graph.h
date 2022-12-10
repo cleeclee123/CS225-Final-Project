@@ -44,6 +44,14 @@ public:
   void setStartingAirport(Airport airport);
 
   /**
+   * @brief Get the Starting Airport object
+   * 
+   * @param airport 
+   * @return Airport 
+   */
+  Airport getStartingAirport();
+
+  /**
    * @brief Get the Airports object
    *
    * @return std::vector<Airport>
@@ -107,6 +115,23 @@ public:
    */
   size_t countConnectedComponents();
 
+  /**
+   * runs dfs on adj list 
+   * 
+   * @param v 
+   */
+  void dfs(Airport v);
+
+  /**
+   * determines if src is in the same componenet as dest /
+   * used in testing/building test cases
+   * 
+   * @param src 
+   * @param dest 
+   * @return true
+   */
+  bool inComponent(Airport src, Airport dest);
+
 private:
   // private data members
   std::map<Airport, std::vector<Edge>> adjList_;
@@ -114,4 +139,9 @@ private:
   std::vector<Airport> airports_;
   std::vector<Airline> airlines_;
   std::vector<Edge> routes_;
+
+  std::map<Airport, bool> visited_;
+  std::map<Airport, int> in_;
+  std::map<Airport, int> out_;
+  int count_;
 };
