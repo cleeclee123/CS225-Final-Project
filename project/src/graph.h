@@ -107,6 +107,22 @@ public:
    */
   size_t countConnectedComponents();
 
+  /**
+   * runs dfs on adj list 
+   * 
+   * @param v 
+   */
+  void dfs(Airport v);
+
+  /**
+   * determines if src is in the same componenet as dest 
+   * 
+   * @param src 
+   * @param dest 
+   * @return true
+   */
+  bool inComponent(Airport src, Airport dest);
+
 private:
   // private data members
   std::map<Airport, std::vector<Edge>> adjList_;
@@ -114,4 +130,8 @@ private:
   std::vector<Airport> airports_;
   std::vector<Airline> airlines_;
   std::vector<Edge> routes_;
+  std::map<Airport, bool> visited_;
+  std::map<Airport, int> in_;
+  std::map<Airport, int> out_;
+  int count_;
 };
