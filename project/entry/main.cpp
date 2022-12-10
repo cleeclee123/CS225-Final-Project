@@ -225,6 +225,7 @@ int main(int argc, char *argv[])
   {
     if (strcmp(argv[1], "default") == 0)
     {
+      std::cout << "This may take 30-60 seconds" << std::endl;
       Constraints c;
       std::vector<Airport> airports = parseAirports("../tests/data/airports.dat");
       std::vector<Airline> airlines = parseAirlines("../tests/data/airlines.dat");
@@ -242,6 +243,7 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(argv[1], "parser") == 0)
     {
+      std::cout << "This may take 30-60 seconds" << std::endl;
       std::cout << "This just parses it. We're not gonna this all of this data out" << std::endl;
       std::vector<Airport> airports = parseAirports(argv[2]);
       std::vector<Airline> airlines = parseAirlines(argv[3]);
@@ -249,6 +251,7 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(argv[1], "dijkstra0") == 0)
     {
+      std::cout << "This may take 30-60 seconds" << std::endl;
       std::vector<Airport> airports = parseAirports("../tests/data/airports.dat");
       std::vector<Airline> airlines = parseAirlines("../tests/data/airlines.dat");
       std::vector<Edge> routes = parseRoutes("../tests/data/routes.dat");
@@ -260,6 +263,7 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(argv[1], "iddfs0") == 0)
     {
+      std::cout << "This may take 30-60 seconds" << std::endl;
       std::vector<Airport> airports = parseAirports("../tests/data/airports.dat");
       std::vector<Airline> airlines = parseAirlines("../tests/data/airlines.dat");
       std::vector<Edge> routes = parseRoutes("../tests/data/routes.dat");
@@ -290,6 +294,7 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(argv[1], "dfs0") == 0)
     {
+      std::cout << "This may take 30-60 seconds" << std::endl;
       std::vector<Airport> airports = parseAirports("../tests/data/airports.dat");
       std::vector<Airline> airlines = parseAirlines("../tests/data/airlines.dat");
       std::vector<Edge> routes = parseRoutes("../tests/data/routes.dat");
@@ -304,6 +309,7 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(argv[1], "dijkstra1") == 0)
     {
+      std::cout << "This may take 30-60 seconds" << std::endl;
       std::vector<Airport> airports = parseAirports(argv[2]);
       std::vector<Airline> airlines = parseAirlines(argv[3]);
       std::vector<Edge> routes = parseRoutes(argv[4]);
@@ -315,6 +321,7 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(argv[1], "iddfs1") == 0)
     {
+      std::cout << "This may take 30-60 seconds" << std::endl;
       std::vector<Airport> airports = parseAirports(argv[2]);
       std::vector<Airline> airlines = parseAirlines(argv[3]);
       std::vector<Edge> routes = parseRoutes(argv[4]);
@@ -327,6 +334,7 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(argv[1], "extra1") == 0)
     {
+      std::cout << "This may take 30-60 seconds" << std::endl;
       std::vector<Airport> airports = parseAirports(argv[2]);
       std::vector<Airline> airlines = parseAirlines(argv[3]);
       std::vector<Edge> routes = parseRoutes(argv[4]);
@@ -338,11 +346,12 @@ int main(int argc, char *argv[])
       c.airplaneType = argv[8];
       std::string airlineID = getIDfromAirlineName(airlines, argv[7]).getAirlineID();
       c.airlineID = airlineID;
-      
+
       extraParameters(graph, airlines, from, to, c);
     }
     else if (strcmp(argv[1], "dfs1") == 0)
     {
+      std::cout << "This may take 30-60 seconds" << std::endl;
       std::vector<Airport> airports = parseAirports(argv[2]);
       std::vector<Airline> airlines = parseAirlines(argv[3]);
       std::vector<Edge> routes = parseRoutes(argv[4]);
