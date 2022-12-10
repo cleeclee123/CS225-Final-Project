@@ -69,7 +69,27 @@ to build them, and then run the test executible using:
 ```bash
 ./test
 ```
-The tests that will be run are located within the tests folder of the project. We have included visualizations of the graphs in the tests folder. 
+The tests that will be run are located within the tests folder of the project. We have included visualizations of the graphs in the tests folder. /
+
+This command will specifically run the data cleaning/parser test cases.
+```bash
+./test [part=1]
+```
+
+This command will specifically run the graph construction test cases.
+```bash
+./test [part=2]
+```
+
+This command will specifically run the search algorithm test cases.
+```bash
+./test [part=3]
+```
+
+This command will specifically run DFS test cases.
+```bash
+./test [part=1]
+```
 
 ## Project Structure and Features
 
