@@ -12,7 +12,7 @@ std::vector<Airport> IDDFS(Graph g, Airport from, Airport to, unsigned int max_d
     if (!found) return std::vector<Airport>();
     std::vector<Airport> path;
     Airport current = to;
-    while (current.airportID_ != from.airportID_) {
+    while (current.getAirportID() != from.getAirportID()) {
         path.push_back(current);
         current = previous[current];
     }

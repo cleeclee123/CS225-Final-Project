@@ -105,6 +105,8 @@ public:
    */
   std::string getPlaneTypes() const;
 
+
+private:
   // edge data members
   std::string airline_;
   std::string airlineID_;
@@ -115,6 +117,4 @@ public:
   bool codeshare_;
   int stops_;
   std::string planeTypes_;
-
-private:
 };

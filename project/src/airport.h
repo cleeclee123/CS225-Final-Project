@@ -166,6 +166,13 @@ public:
   std::string getType() const;
 
 
+
+private:
+  // private helper functions
+  long double toKilometers(const long double distance);
+  long double toMiles(const long double distance);
+  long double toRadians(const long double degrees);
+
   // data members
   std::string airportID_;
   std::string airportName_;
@@ -180,11 +187,4 @@ public:
   std::string dst_;
   std::string tz_;
   std::string type_;
-
-private:
-  // private helper functions
-  long double toKilometers(const long double distance);
-  long double toMiles(const long double distance);
-  long double toRadians(const long double degrees);
-
 };

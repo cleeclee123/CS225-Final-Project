@@ -96,6 +96,8 @@ public:
    */
   bool getIsActive() const;
 
+
+private:
   // airline data members
   std::string airlineID_;
   std::string name_;
@@ -105,7 +107,5 @@ public:
   std::string callsign_;
   std::string country_;
   bool isActive_;
-
-private:
 
 };

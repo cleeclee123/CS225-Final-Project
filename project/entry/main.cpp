@@ -20,10 +20,10 @@ void RunDijkstra(Graph graph, Airport from, Airport to)
 {
     std::vector<std::pair<Airport, double>> path = Dijkstra(graph, from, to);
     std::reverse(path.begin(), path.end());
-    std::cout << "Shortest Path between " << from.airportName_ << " and " << to.airportName_ << " is: " << std::endl;
+    std::cout << "Shortest Path between " << from.getAirportName() << " and " << to.getAirportName() << " is: " << std::endl;
     for (unsigned int i = 0; i < path.size(); i++)
     {
-        std::cout << path[i].first.airportName_;
+        std::cout << path[i].first.getAirportName();
         if (i != path.size() - 1)
             std::cout << " -> ";
     }
@@ -59,7 +59,7 @@ void RunIDDFS(Graph graph, Airport from, Airport to, unsigned int max_depth)
     std::vector<Airport> path = IDDFS(graph, from, to, max_depth, previous);
     if (path.empty())
     {
-        std::cout << "No path found between " << from.airportName_ << " and " << to.airportName_ << " with atmost " << max_depth << " flights" << std::endl;
+        std::cout << "No path found between " << from.getAirportName() << " and " << to.getAirportName() << " with atmost " << max_depth << " flights" << std::endl;
     }
     else
     {
@@ -70,10 +70,10 @@ void RunIDDFS(Graph graph, Airport from, Airport to, unsigned int max_depth)
         {
             totalDistance += graph.getWeight(path[i], path[i + 1]);
         }
-        std::cout << "Path between " << from.airportName_ << " and " << to.airportName_ << " with atmost " << max_depth << " flights is: " << std::endl;
+        std::cout << "Path between " << from.getAirportName() << " and " << to.getAirportName() << " with atmost " << max_depth << " flights is: " << std::endl;
         for (unsigned int i = 0; i < path.size(); i++)
         {
-            std::cout << path[i].airportName_;
+            std::cout << path[i].getAirportName();
             if (i != path.size() - 1)
                 std::cout << " -> ";
         }
@@ -108,7 +108,7 @@ Airline getAirlineByID(std::vector<Airline> airlines, std::string id)
 {
     for (const auto &airline : airlines)
     {
-        if (airline.airlineID_ == id)
+        if (airline.getAirlineID() == id)
         {
             return airline;
         }
@@ -127,7 +127,7 @@ Airline getIDfromAirlineName(std::vector<Airline> airlines, std::string name)
 {
     for (const auto &airline : airlines)
     {
-        if (toLowercase(airline.name_) == toLowercase(name))
+        if (toLowercase(airline.getName()) == toLowercase(name))
         {
             return airline;
         }
@@ -155,30 +155,30 @@ void extraParameters(Graph graph, std::vector<Airline> airlines, Airport from, A
 {
     std::vector<std::pair<Airport, double>> path = Dijkstra(graph, from, to);
     std::reverse(path.begin(), path.end());
-    std::string airlineName = getAirlineByID(airlines, conditions.airlineID).name_;
+    std::string airlineName = getAirlineByID(airlines, conditions.airlineID).getName();
     for (size_t i = 0; i < path.size(); i++)
     {
         for (size_t j = i + 1; j < path.size(); j++)
         {
             for (auto &e : graph.getEdge(path[i].first, path[j].first))
             {
-                if (e.airlineID_ == conditions.airlineID && (e.planeTypes_.find(conditions.airplaneType) != std::string::npos))
+                if (e.getAirlineID() == conditions.airlineID && (e.getPlaneTypes().find(conditions.airplaneType) != std::string::npos))
                 {
-                    std::cout << "A flight was found from " << path[i].first.airportName_ << " to " << path[j].first.airportName_ << " on a " << conditions.airplaneType << " with " << airlineName << std::endl;
+                    std::cout << "A flight was found from " << path[i].first.getAirportName() << " to " << path[j].first.getAirportName() << " on a " << conditions.airplaneType << " with " << airlineName << std::endl;
                     std::cout << "Here's the details: " << std::endl;
                     e.printEdge();
                 }
-                else if (e.airlineID_ != conditions.airlineID && (e.planeTypes_.find(conditions.airplaneType) != std::string::npos))
+                else if (e.getAirlineID() != conditions.airlineID && (e.getPlaneTypes().find(conditions.airplaneType) != std::string::npos))
                 {
-                    std::cout << "A flight was found from " << path[i].first.airportName_ << " to " << path[j].first.airportName_ << " on a " << conditions.airplaneType << " but not with " << airlineName << std::endl;
-                    std::cout << "We found a flight with " << e.airline_ << std::endl;
+                    std::cout << "A flight was found from " << path[i].first.getAirportName() << " to " << path[j].first.getAirportName() << " on a " << conditions.airplaneType << " but not with " << airlineName << std::endl;
+                    std::cout << "We found a flight with " << e.getAirline() << std::endl;
                     std::cout << "Here's the details " << std::endl;
                     e.printEdge();
                 }
-                else if (e.airlineID_ == conditions.airlineID && (e.planeTypes_.find(conditions.airplaneType) == std::string::npos))
+                else if (e.getAirlineID() == conditions.airlineID && (e.getPlaneTypes().find(conditions.airplaneType) == std::string::npos))
                 {
-                    std::cout << "A flight was found from " << path[i].first.airportName_ << " to " << path[j].first.airportName_ << " with " << airlineName << " but not on a " << conditions.airplaneType << std::endl;
-                    std::cout << "We found a flight on " << e.planeTypes_ << std::endl;
+                    std::cout << "A flight was found from " << path[i].first.getAirportName() << " to " << path[j].first.getAirportName() << " with " << airlineName << " but not on a " << conditions.airplaneType << std::endl;
+                    std::cout << "We found a flight on " << e.getPlaneTypes() << std::endl;
                     std::cout << "Here's the details " << std::endl;
                     e.printEdge();
                 }
@@ -208,7 +208,7 @@ int main()
     std::string airline = "american airlines"; // change this to a different airline
     c.airplaneType = "747"; // change this to a different airplane type
 
-    std::string airlineID = getIDfromAirlineName(airlines, airline).airlineID_;
+    std::string airlineID = getIDfromAirlineName(airlines, airline).getAirlineID();
     c.airlineID = airlineID;
 
     extraParameters(graph, airlines, from, to, c);

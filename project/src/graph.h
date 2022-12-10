@@ -101,29 +101,11 @@ public:
   void printGraph();
 
   /**
-   * @brief counts number of connect components in the graph, works for undirected only
+   * @brief counts number of connect components in the graph, works for undirected only, used in testing/building test cases
    *
    * @return size_t number of connect components in the graaph
    */
   size_t countConnectedComponents();
-
-  /**
-   * runs dfs on adj list 
-   * 
-   * @param v 
-   */
-  void dfs(Airport v);
-
-  /**
-   * determines if src is in the same componenet as dest
-   * was used as a check for before running dijkstras on the graph
-   * kept in graph class for potential use in writing test cases  
-   * 
-   * @param src 
-   * @param dest 
-   * @return true
-   */
-  bool inComponent(Airport src, Airport dest);
 
 private:
   // private data members
@@ -132,8 +114,4 @@ private:
   std::vector<Airport> airports_;
   std::vector<Airline> airlines_;
   std::vector<Edge> routes_;
-  std::map<Airport, bool> visited_;
-  std::map<Airport, int> in_;
-  std::map<Airport, int> out_;
-  int count_;
 };

@@ -24,7 +24,7 @@ std::vector<std::pair<Airport, double>> Dijkstra(Graph graph, Airport from, Airp
   }
 
   //while the top of the queue is not the destination
-  while (pq.top().second.airportID_ != to.airportID_) {
+  while (pq.top().second.getAirportID() != to.getAirportID()) {
     //get the top of the queue
     Airport u = pq.top().second;
     //pop the top of the queue
@@ -50,7 +50,7 @@ std::vector<std::pair<Airport, double>> Dijkstra(Graph graph, Airport from, Airp
   //get path from previous
   std::vector<std::pair<Airport, double>> path;
   Airport current = to;
-  while (current.airportID_ != from.airportID_) {
+  while (current.getAirportID() != from.getAirportID()) {
     path.push_back(std::make_pair(current, dist[current]));
     current = previous[current];
   }

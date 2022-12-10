@@ -73,7 +73,7 @@ void Edge::printEdge()
 {
   std::cout << "airline: " << airline_ << std::endl;
   std::cout << "airline id " << airlineID_ << std::endl;
-  std::cout << "source airport iata" << srcIATA_ << std::endl;
+  std::cout << "source airport iata " << srcIATA_ << std::endl;
   std::cout << "source airport id " << srcID_ << std::endl;
   std::cout << "dest airport iata " << destIATA_ << std::endl;
   std::cout << "dest airport id " << destID_ << std::endl;
