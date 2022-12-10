@@ -44,6 +44,7 @@ std::vector<std::pair<Airport, double>> Dijkstra(Graph graph, Airport from, Airp
     }
     //save the airport as visited
     visited[u] = true;
+    if (pq.empty()) return std::vector<std::pair<Airport, double>>();
   }
 
   //get path from previous
