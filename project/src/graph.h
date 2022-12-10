@@ -115,7 +115,9 @@ public:
   void dfs(Airport v);
 
   /**
-   * determines if src is in the same componenet as dest 
+   * determines if src is in the same componenet as dest
+   * was used as a check for before running dijkstras on the graph
+   * kept in graph class for potential use in writing test cases  
    * 
    * @param src 
    * @param dest 
