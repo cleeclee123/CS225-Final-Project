@@ -127,11 +127,16 @@ This command will specifically run DFS test cases.
   * Routes parser
 
 * #### Objects (Chris)
-  * Graph class
   * Airport class
+    * Holds information about Airports such as the IATA and longitude/latitude coordinates
   * Airline class
-  * Routes class
-  
+    * Hold information about Airlines, this class helps us answer the "addiitonal constraints" portion of our leading question (along with the edge class that has the corresponding airline iata)
+  * Edge class
+    * Holds information about flights/avaliable routes from a src to dest airport
+  * Graph class
+    * Abstracts away the adjacency list implementation and other methods to help construct the graph and test the construction
+    * The graph also contains the dfs traversal and a data member that holds the resulting traversal. You must call ```cpp graph.clearTraversal();``` after each traversal
+    * The graph class also has two methods that counts the number of connected components and determine if two airports are in the same connected component. This was initally used as a check before searching; however, we now use it to help us to build test cases
 * #### Algorithms (Areet)
   * Dijkstra's Shortest-Path Algorithm
     * Finds a path between a "from" and "to" airport
