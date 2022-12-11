@@ -123,8 +123,14 @@ This command will specifically run DFS test cases.
 ## Features: 
 * #### Preprocessing/Parser (Siya)
   * Airport parser
+    * Helper function used with line parameter and delimiter parameter
+    * Skips if split data is above the amount of data for the Airport constructor
+    * Removes \N from input and changes it to blank entry
+    * Converts some Y/N values into booleans
   * Airline parser
+    * Same as Airport but for Airline objects
   * Routes parser
+    * Same as Airport but for Edge objects
 
 * #### Objects (Chris)
   * Airport class
