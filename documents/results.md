@@ -11,6 +11,8 @@
             * The distances are not accurate in the above example, but the idea is that the path, the total path distance, and intermediate distances, are returned. 
     * If there is no path between the from and to Airport, then an empty vector is returned
     * The algorithm is correct since it always finds the shortest path if the airports are connected in some way
+    * The runtime will be the same as mentioned in the project proposal: O(|E| + |V|log|V|). All the edges are visited when checking the adjacency list, which explains O(|E|). Additionally, the while loop iterates through the verticies (O|V|); during each iteration, the priority queue is modified (O(log|V|)). 
+      * In the context of the project, the while loops continues to check to see if the from and to Airports are matched. If not, edges are cycled through and the edge with less weight is added to the priority queue. 
 
   * Iterative Deepening Depth First Search Algorithm
     * IDDFS works by starting at a given starting node, and running DFS at increasing depths until the destination is reached
@@ -21,11 +23,15 @@
     * If there is no path between the from and to Airport, then an empty vector is returned
     * The algorithm can correctly identify a path within the range provided; however, this path may not be the most optimal
         * Once a path is found, the function returns. To find the most optimal path, Dijsktra's is best. 
+    * The run time of IDDFS is identitical to the project proposal. The nodes of the graph each have a different number of edges. Therefore, the worst case time complexity will be O(n) where n is the number of vertices. More specifically, n is the number of vertices within the maximum depth. 
+      * In the context of the project, n represents the number of airports within a maximum number of flights. Of course, the time complexity will on average be much less than O(n).
     
   * DFS
     * DFS works by searching down the graph until a leaf-node is reached, and then back-tracking and going across (hence depth-first search)
     * This outputs a path from the start node to the target node
     * Although the path is correct, it is not optimized or special in any way. It simply represents the first found path from the origin to the destination and does not account for weight. 
+    * The time complexity of DFS is O(V + E), as all the vertices and edges are visited. This is similar to the project proposal. 
+      * Based on our project, V represents the airports and E represents the flights. All airports and flights would be checked in a worst-case scenario. 
 
 
 ### The answer to your leading question 
