@@ -308,6 +308,7 @@ int main(int argc, char *argv[])
       {
         std::cout << e.getAirportName() << std::endl;
       }
+      graph.clearTraversal();
     }
     else if (strcmp(argv[1], "dijkstra1") == 0)
     {
@@ -365,6 +366,7 @@ int main(int argc, char *argv[])
       {
         std::cout << e.getAirportName() << std::endl;
       }
+      graph.clearTraversal();
     }
     else if (strcmp(argv[1], "dontrunthis") == 0)
     {
